@@ -1,0 +1,17 @@
+*/config/development
+*/logs/log-*.php
+*/logs/!index.html
+*/cache/*
+*/cache/!index.html
+captcha/*
+*.sublime-project
+*.sublime-workspace
+vendor/*
+composer.lock
+composer.json
+*/test/*
+bin/*
+*.settings/
+.buildpath
+.project
+

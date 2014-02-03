@@ -1,0 +1,54 @@
+.tblDalam td{ 
+	border-top: none;
+    padding: 5px;
+}
+.operation{
+	padding: 0 2px;
+}
+.abu{
+	background-color:#F5F5F5;
+}
+.tebal{
+	font-weight: bold;
+}
+.atas{
+	vertical-align: top;
+}
+input[type='file']{
+	padding: 5px;
+	border: 2px solid #ddd;
+	font-size: 10pt;
+	font-family: arial, calibri;
+}
+.form-search{
+	border: 1px solid #ddd;
+	padding: 0 10px 10px 10px;
+}
+.content{
+	width: 80%;
+	clear: left; 
+	float: left; 
+	display: block; 
+	position: relative; 
+	left: 10%;
+	right: 10%;
+}
+
+/*
+body { width: 100%; margin: 0; padding: 0; overflow: hidden; }
+#wrapper_1 { clear: left; float: left; position: relative; left: 50%; }
+#container_1 { display: block; float: left; position: relative; right: 50%; }
+*/
+
+#contact-link {
+width: 140px;
+height: 38px;
+padding: 5px 10px 10px 10px;
+background-color: #5a9fd4;
+position: fixed;
+bottom: 0;
+right: 20px;
+border-top-right-radius: 6px;
+border-top-left-radius: 6px;
+z-index: 1000000000;
+}

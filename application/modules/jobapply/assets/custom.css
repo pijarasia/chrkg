@@ -1,0 +1,26 @@
+.tblDalam td{ 
+	border-top: none;
+    padding: 5px;
+}
+.operation{
+	padding: 0 2px;
+}
+.abu{
+	background-color:#F5F5F5;
+}
+.tebal{
+	font-weight: bold;
+}
+.atas{
+	vertical-align: top;
+}
+input[type='file']{
+	padding: 5px;
+	border: 2px solid #ddd;
+	font-size: 10pt;
+	font-family: arial, calibri;
+}
+.form-search{
+	border: 1px solid #ddd;
+	padding: 0 10px 10px 10px;
+}

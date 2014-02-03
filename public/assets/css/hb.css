@@ -1,0 +1,1104 @@
+#mainContent {
+  margin: 0 auto;
+  max-width: 1245px;
+  *max-width: 1302px;
+}
+
+.blocks {
+  padding-bottom: 10px;
+  margin: 0 auto;
+  width: 1226px;
+}
+
+.statusBlock {
+  width: 300px;
+  height: 150px;
+  float: left;
+  margin-right: 9px;
+}
+
+.statusBlock h2 {
+  line-height: 18px;
+  width: 280px;
+}
+
+.statusBlock .blue_header h2 {
+  width: auto;
+  margin-right: 0;
+}
+
+.statusBlock .status {
+  float: left;
+  color: #FFFFFF;
+  font-size: 14px;
+}
+
+.statusBlock .labelAllJob,.statusBlock .labelMyJob {
+  float: left;
+  margin-right: 2px;
+  text-align: right;
+  width: 85px;
+  color: #FFFFFF;
+}
+
+.statusBlock .blue_header h2 .labelAllJob,.statusBlock .blue_header h2 .labelMyJob {
+  width: auto;
+  margin-left: 25px;
+}
+
+.statusBlock .radioBtn {
+  float: left;
+}
+
+.statusBlock .number {
+  padding-right: 5px;
+  text-align: right;
+  xwidth: 45px;
+}
+
+.scoreCardBlock {
+  width: 290px;
+  height: 150px;
+  float: left;
+  margin-right: 9px;
+  position: relative;
+}
+
+.considerBlock {
+  width: 300px;
+  height: 150px;
+  float: left;
+  margin-right: 8px;
+}
+
+.considerBlock h2 {
+  width: 280px;
+}
+
+.interviewBlock {
+  width: 300px;
+  height: 150px;
+}
+
+.interviewBlock .candidateName {
+  font-weight: bold;
+}
+
+.statusBlock table tr {
+  background: #ffffff !important;
+}
+
+.lineBorder td {
+  border-top: 1px solid #8F8F8F;
+  line-height: 11px;
+  padding-top: 2px;
+}
+
+.verticalLine {
+  border-right: 1px solid #8F8F8F;
+  padding-right: 5px;
+  text-align: right;
+  width: 16px;
+}
+
+.noIndent {
+  text-indent: 0;
+}
+
+.borderBottom td {
+  border-top: 1px solid #8F8F8F;
+}
+
+.interviewBlock .day {
+  font-weight: bold;
+  min-width: 80px;
+}
+
+.interviewBlock .today {
+  color: #25A9E0;
+  padding: 3px 0 0 9px;
+  vertical-align: top;
+}
+
+.table_window .jspVerticalBar {
+  border-left: none;
+}
+
+.scoreCardBlock .scroll-content {
+  margin-bottom: 0;
+}
+
+.scoreCardBlock .colAddMyTodo {
+  padding-top: 7px;
+  padding-left: 5px;
+  position: relative;
+}
+
+.scoreCardBlock .checkboxColumn {
+  width: 25px;
+  padding-left: 5px
+}
+
+.scoreCardBlock .txtFieldMyToDo {
+  margin-left: 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px;
+  border: 1px solid #cccccc;
+  width: 242px;
+  height: 19px;
+  padding-left: 5px;
+  padding-right: 25px;
+}
+
+.scoreCardBlock .msgSaveTodo {
+  background: none repeat scroll 0 0 #FFFFFF;
+  left: 78px;
+  padding: 5px;
+  position: absolute;
+  top: 74px;
+  width: 111px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px;
+  border: 1px solid #F2F2F2;
+  display: none;
+}
+
+.scoreCardBlock .taskName {
+  position: relative;
+  text-indent: 0 !important
+}
+
+.scoreCardBlock .taskName .remove {
+  position: absolute;
+  right: 0px;
+  display: none;
+  cursor: pointer;
+}
+
+.scoreCardBlock .addMyToDoBtn {
+  cursor: pointer;
+  height: 15px;
+  position: absolute;
+  right: 18px;
+  top: 10px;
+}
+
+.jobCandidateBlock .headerCol {
+  left: 0;
+  position: absolute;
+  top: 28px;
+  width: 98.8%;
+  z-index: 10;
+}
+
+.jobCandidateBlock {
+  width: 1222px;
+  /* height: 600px; */
+  height: auto; /* remove scroll bar HB-5892 */
+  margin: 0 auto 5px;
+  position: relative;
+}
+
+.jobCandidateBlock .scroll-pane-arrows { /* height: 99.9%;
+  overflow-y: scroll !important; */
+  
+}
+
+.jobCandidateBlock .hrActiveJob {
+  float: left;
+  color: #FFFFFF;
+  font-size: 16px;
+}
+
+.jobCandidateBlock .labelAllJob,.jobCandidateBlock .labelMyJob {
+  float: left;
+  margin-right: 3px;
+  text-align: right;
+  padding-left: 25px;
+  color: #FFFFFF;
+}
+
+.jobCandidateBlock .radioBtn {
+  float: left;
+}
+
+.jobCandidateBlock .labelPicker {
+  float: left;
+  margin-right: 3px;
+  text-align: right;
+  padding-left: 5px;
+  color: #FFFFFF;
+}
+
+.jobCandidateBlock .datetimePicker {
+  float: left;
+  width: 75px;
+  height: 14px;
+}
+
+#jobTypeSelector {
+  margin: 0 0 0 25px;
+  width: 120px;
+  height: 15px;
+}
+
+#candidateSource {
+  width: 140px;
+  height: 16px;
+}
+
+#internalRecruiterSelector {
+  margin: 0 0 0 5px;
+  min-width: 140px;
+  width: 140px;
+  height: 16px;
+}
+
+#locationSelector,#verticalSelector {
+  margin: 0 0 0 5px;
+  min-width: 120px;
+  width: 120px;
+  height: 16px;
+}
+
+.jobCandidateBlock .cvAccepted {
+  background: url(../../images/icons/chevron.png);
+  width: 100px;
+}
+
+.jobCandidateBlock .priority {
+  background-color: #8E9197 !important;
+  width: 37px;
+  text-align: center !important;
+  text-indent: 0;
+}
+
+.jobCandidateBlock .positions- {
+  background-color: #8E9197 !important;
+  /* width: 211px; */
+  text-align: center !important;
+}
+
+.jobCandidateBlock .positions-english {
+  background-color: #8E9197 !important;
+  /* width: 211px; */
+  text-align: center !important;
+}
+
+.jobCandidateBlock .positions-en_UK {
+  background-color: #8E9197 !important;
+  /* width: 211px; */
+  text-align: center !important;
+}
+
+.jobCandidateBlock .positions-en {
+  background-color: #8E9197 !important;
+  width: 206px; /* 3863*/
+  text-align: center !important;
+}
+
+.jobCandidateBlock .positions-ja {
+  background-color: #8E9197 !important;
+  /* width: 211px; */
+  text-align: center !important;
+}
+
+.jobCandidateBlock .positions-vi {
+  background-color: #8E9197 !important;
+  /* width: 211px; */
+  text-align: center !important;
+}
+
+.jobCandidateBlock .positions-zh {
+  background-color: #8E9197 !important;
+  /* width: 211px; */
+  text-align: center !important;
+}
+
+.jobCandidateBlock .status- {
+  width: 76px;
+  background-color: #8E9197 !important;
+  text-align: center !important;
+  text-indent: 0;
+}
+
+.jobCandidateBlock .status-english { /* width: 76px; */
+  background-color: #8E9197 !important;
+  text-align: center !important;
+  /* text-indent: 2px */
+}
+
+.jobCandidateBlock .status-en_UK { /* width: 50px; */
+  background-color: #8E9197 !important;
+  text-align: center !important;
+  /* text-indent: 2px */
+}
+
+.jobCandidateBlock .status-en {
+  width: 88px;
+  background-color: #8E9197 !important;
+  text-align: center !important;
+  text-indent: 0;
+}
+
+.jobCandidateBlock table .status-en label {
+  width: 88px;
+  overflow: hidden;
+}
+
+.jobCandidateBlock .status-ja { /* width: 76px; */
+  background-color: #8E9197 !important;
+  text-align: center !important;
+  /* text-indent: 2px; */
+}
+
+.jobCandidateBlock .status-vi { /* width: 50px; */
+  background-color: #8E9197 !important;
+  text-align: center !important;
+  /* text-indent: 2px; */
+}
+
+.jobCandidateBlock .status-zh { /* width: 50px; */
+  background-color: #8E9197 !important;
+  text-align: center !important;
+  /* text-indent: 2px; */
+}
+
+.jobCandidateBlock table tr.headerRow th.colSteps {
+  background: url(../../images/step-bar.png) no-repeat 0 center #BFC0C2;
+  width: 882px;
+}
+
+.colSteps label {
+  float: left;
+  width: 100px;
+  line-height: 10px
+}
+
+.jobCandidateBlock .colPriority {
+  padding: 0;
+  width: 35px;
+  background: #147DC1;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2DA1CF), to(#147DC1)); 
+	background: -webkit-linear-gradient(top, #2DA1CF, #147DC1); 
+	background: -moz-linear-gradient(top, #2DA1CF, #147DC1); 
+	background: -ms-linear-gradient(top, #2DA1CF, #147DC1); 
+	background: -o-linear-gradient(top, #2DA1CF, #147DC1);	
+  position: relative;
+  border: 2px solid #ffffff;
+}
+
+.jobCandidateBlock .colPriority .priorityTable {
+  background: transparent;
+}
+
+.jobCandidateBlock .jobName {
+  font-weight: bold;
+  padding-bottom: 5px;
+  background: #147DC1;
+  	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2DA1CF), to(#147DC1)); 
+	background: -webkit-linear-gradient(top, #2DA1CF, #147DC1); 
+	background: -moz-linear-gradient(top, #2DA1CF, #147DC1); 
+	background: -ms-linear-gradient(top, #2DA1CF, #147DC1); 
+	background: -o-linear-gradient(top, #2DA1CF, #147DC1);	  
+   -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px;
+  color: #FFFFFF;
+  padding: 6px 3px;
+  position: relative;
+  min-height: 49px;
+}
+
+.jobCandidateBlock .priorityName {
+  font-size: 13px;
+  font-weight: bold;
+  padding: 6px 0;
+  text-align: center;
+  color: #ffffff;
+  text-transform: capitalize;
+  text-indent: 2px;
+  min-height: 49px;
+  background: transparent;
+}
+
+.jobCandidateBlock .jobNameInternalMobility,.jobCandidateBlock .priorityNameInternalMobility {
+  background: #376092;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#376092), to(#17375E)); 
+	background: -webkit-linear-gradient(top, #376092, #17375E); 
+	background: -moz-linear-gradient(top, #376092, #17375E); 
+	background: -ms-linear-gradient(top, #376092, #17375E); 
+	background: -o-linear-gradient(top, #376092, #17375E);	
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#376092, endColorstr=#17375E );
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#376092, endColorstr=#17375E );
+}
+
+.jobCandidateBlock .colPositions {
+  color: #FFFFFF;
+  /* padding: 2px; */ /* 3863*/
+  width: 206px;
+}
+
+.jobCandidateBlock .colPositions .jobName .title {
+  width: 140px;
+  color: #ffffff;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+.jobCandidateBlock .colPositions .jobName .title a {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+div.jobName .number {
+  position: absolute;
+  top: 5px;
+  right: 2px;
+  /* width: 40px; */
+  display: block;
+  text-align: center;
+}
+
+div.jobName .number .action {
+  display: block;
+  overflow: hidden;
+}
+
+div.jobName .number span {
+  float: left;
+  width: 20px;
+}
+
+div.jobName .number label {
+  color: #ffffff;
+  font-size: 16px;
+  float: left;
+  padding-left: 5px;
+}
+
+div.jobName .FAQ {
+  bottom: -4px;
+  height: 27px;
+  position: absolute;
+  right: 0;
+  width: 35px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.colPositions .department,.colPositions .headcount {
+  font-size: 11px;
+  font-weight: normal;
+  color: #FFFFFF;
+}
+
+.jobCandidateBlock .colStatus {
+  line-height: 20px;
+  color: #4D4D4D;
+  font-size: 16px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  text-align: center;
+  width: 88px;
+  text-indent: 0;
+}
+
+.jobCandidateBlock .colCVSent {
+  width: 143px;
+  text-align: center;
+  vertical-align: top;
+  padding: 2px 1px
+}
+
+.jobCandidateBlock .colCVAccepted {
+  width: 143px;
+  vertical-align: top;
+  padding: 2px 1px
+}
+
+.jobCandidateBlock .col1stInterview {
+  width: 143px;
+  vertical-align: top;
+  padding: 2px 1px
+}
+
+.jobCandidateBlock .col2ndInterview {
+  width: 143px;
+  vertical-align: top;
+  padding: 2px 1px
+}
+
+.jobCandidateBlock .colOffer {
+  width: 143px;
+  vertical-align: top;
+  padding: 2px 1px
+}
+
+.jobCandidateBlock .colHires {
+  width: 143px;
+  vertical-align: top;
+  padding: 2px 1px
+}
+
+.jobCandidateBlock table {
+  background: #cccccc;
+  table-layout: fixed;
+}
+
+.jobCandidateBlock table th label {
+  color: #fff;
+  font-size: 9px;
+  display: block;
+  line-height: 17px;
+}
+
+.jobCandidateBlock table td {
+  color: #fff;
+  background: #FFFFFF;
+  padding: 2px 0;
+}
+
+.dialog .candidateItem {
+  margin-left: 20px;
+}
+
+div.candidateItem {
+  padding-left: 2px;
+  margin-bottom: 4px;
+  margin-top: 1px;
+  width: 142px;
+  /* height: 14px; */
+  text-align: left;
+  color: #ffffff;
+  xfont-size: 16px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px;
+  position: relative;
+  -moz-box-shadow: 1px 1px 3px #222222; /* Firefox */
+  -webkit-box-shadow: 1px 1px 3px #222222; /* Safari, Chrome */
+  box-shadow: 1px 1px 3px #222222; /* CSS 3*/
+}
+
+div.candidateItem a {
+  color: #ffffff;
+}
+
+div.status1 {
+  background: #EDA13C;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#EDA13C), to(#F04F2F)); 
+	background: -webkit-linear-gradient(top, #EDA13C, #F04F2F); 
+	background: -moz-linear-gradient(top, #EDA13C, #F04F2F); 
+	background: -ms-linear-gradient(top, #EDA13C, #F04F2F); 
+	background: -o-linear-gradient(top, #EDA13C, #F04F2F);	  
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px;
+}
+
+div.status2 {
+  background: #DF1B23;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DF1B23), to(#AF151B)); 
+	background: -webkit-linear-gradient(top, #DF1B23, #AF151B); 
+	background: -moz-linear-gradient(top, #DF1B23, #AF151B); 
+	background: -ms-linear-gradient(top, #DF1B23, #AF151B); 
+	background: -o-linear-gradient(top, #DF1B23, #AF151B);	
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px;
+}
+
+div.status3 {
+  background: #4EAF4C;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4EAF4C), to(#2C683B)); 
+	background: -webkit-linear-gradient(top, #4EAF4C, #2C683B); 
+	background: -moz-linear-gradient(top, #4EAF4C, #2C683B); 
+	background: -ms-linear-gradient(top, #4EAF4C, #2C683B); 
+	background: -o-linear-gradient(top, #4EAF4C, #2C683B);	
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px;
+}
+
+.colAcceptPosition {
+  text-align: center;
+  background: #F2F2F2 !important
+}
+
+.colAcceptPosition .msg {
+  color: #9F9F9F;
+  font-size: 22px;
+}
+
+.colAcceptPosition .acceptPositionBtn {
+  width: 120px;
+  background: #CCCCCC;
+  color: #FFFFFF;
+  xdisplay: block;
+  font-size: 20px;
+  height: 34px;
+  width: 171px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px;
+  border: 1px solid #7F7F7F;
+  cursor: pointer;
+}
+
+div.candidateItem .popupIcon {
+  position: absolute;
+  top: 3px;
+  right: 0;
+  cursor: pointer;
+  width: 14px;
+  height: 10px;
+  background: url(../../images/icons/eye.png) no-repeat;
+}
+
+div.candidateItem .greenIcon {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+  background: url(../../images/icons/greenIcon.png) no-repeat;
+}
+
+.textField {
+  display: block;
+  font-size: 24px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px -moz-box-shadow:        1px 1px 3px #222222; /* Firefox */
+  -webkit-box-shadow: 1px 1px 3px #222222; /* Safari, Chrome */
+  box-shadow: 1px 1px 3px #222222; /* CSS 3*/
+  background-color: #FFFFFF;
+  border: 1px solid #AFAFAF;
+  font-size: 11px;
+  margin: 5px 0;
+  padding: 3px 2px;
+  width: 130px;
+}
+/* Customize Dialog Popup*/
+.ui-dialog-titlebar {
+  background: #ccc;
+}
+
+.ui-dialog-title {
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.ui-dialog .ui-dialog-title {
+  width: 90%;
+}
+
+.errorMessage {
+  color: red;
+  clear: both;
+  width: 190px;
+}
+
+#fromDatePair label {
+  float: left;
+  display: block;
+  padding-top: 7px;
+  width: 40px;
+}
+
+#fromDatePair input {
+  float: left;
+  width: 180px;
+}
+
+#toDatePair label {
+  float: left;
+  display: block;
+  padding-top: 7px;
+  width: 40px;
+}
+
+#toDatePair input {
+  float: left;
+  width: 180px;
+}
+
+.requisition_sign_off {
+  cursor: pointer;
+}
+
+.bghover:hover {
+  background: #AFE1F7;
+  cursor: pointer;
+}
+
+#requisitionSignOffDialog table {
+  background-color: #ccc;
+}
+
+#requisitionSignOffDialog table.blue th {
+  font-weight: bold;
+}
+
+#requisitionSignOffDialog table.blue th a {
+  font-weight: bold;
+}
+
+.FAQ .faq_light {
+  color: white;
+  border: solid 1px white;
+  padding: 2px;
+  cursor: pointer;
+  margin-top: 3px;
+  margin-right: 3px;
+  background: #2DA1CF;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2DA1CF), to(#147DC1)); 
+	background: -webkit-linear-gradient(top, #2DA1CF, #147DC1); 
+	background: -moz-linear-gradient(top, #2DA1CF, #147DC1); 
+	background: -ms-linear-gradient(top, #2DA1CF, #147DC1); 
+	background: -o-linear-gradient(top, #2DA1CF, #147DC1);	
+}
+
+.FAQ .faq_gray {
+  color: #9B9B9B;
+  border: solid 1px #9B9B9B;
+  padding: 2px;
+  cursor: pointer;
+  margin-top: 3px;
+  margin-right: 3px;
+  background: #2DA1CF;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2DA1CF), to(#147DC1)); 
+	background: -webkit-linear-gradient(top, #2DA1CF, #147DC1); 
+	background: -moz-linear-gradient(top, #2DA1CF, #147DC1); 
+	background: -ms-linear-gradient(top, #2DA1CF, #147DC1); 
+	background: -o-linear-gradient(top, #2DA1CF, #147DC1);
+}
+
+#candidateSource option {
+  margin-left: 5px;
+}
+
+.jobCandidateBlock .jobInactive {
+  background: #E5E3E3;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#E5E3E3), to(#AAA7A7)); 
+	background: -webkit-linear-gradient(top, #E5E3E3, #AAA7A7); 
+	background: -moz-linear-gradient(top, #E5E3E3, #AAA7A7); 
+	background: -ms-linear-gradient(top, #E5E3E3, #AAA7A7); 
+	background: -o-linear-gradient(top, #E5E3E3, #AAA7A7);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#E5E3E3, endColorstr=#AAA7A7 );
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#E5E3E3, endColorstr=#AAA7A7 );
+}
+
+.jobCandidateBlock .closedIn7days {
+  background: #EDA13C;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#EDA13C), to(#F04F2F)); 
+	background: -webkit-linear-gradient(top, #EDA13C, #F04F2F); 
+	background: -moz-linear-gradient(top, #EDA13C, #F04F2F); 
+	background: -ms-linear-gradient(top, #EDA13C, #F04F2F); 
+	background: -o-linear-gradient(top, #EDA13C, #F04F2F);
+}
+
+#suggestionReminder .active {
+  background: #AFE1F7;
+  border-bottom: 1px solid #666666;
+  font-weight: bold;
+}
+
+#requisitionSignOffDialog .title {
+  padding: 10px 0px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* HB-3815 */
+#requisitionSignOffDialog .header {
+  height: 40px;
+}
+
+#requisitionSignOffDialog .header li {
+  line-height: 3em;
+  vertical-align: middle;
+  height: 38px;
+}
+
+#requisitionSignOffDialog .header .column1,#requisitionSignOffDialog .header .column2,#requisitionSignOffDialog .header .column3,#requisitionSignOffDialog .header .column4,#requisitionSignOffDialog .header .column5
+  {
+  background-color: #DFF2FA;
+}
+
+#requisitionSignOffDialog .column-header {
+  border: 1px solid #CCCCCC;
+  display: block;
+  float: left;
+  font-size: 10px;
+  font-weight: bold;
+  height: auto;
+  min-height: 34px;
+  overflow: visible !important;
+  text-align: left;
+  width: 50px;
+  word-wrap: break-word;
+}
+
+#requisitionSignOffDialog .column1,#requisitionSignOffDialog .content .column1 {
+  width: 18px;
+  text-align: center;
+}
+
+#requisitionSignOffDialog .column2,#requisitionSignOffDialog .content .column2 {
+  width: 443px;
+  padding-left: 5px;
+  border-left: medium none;
+}
+
+#requisitionSignOffDialog .column3,#requisitionSignOffDialog .content .column3 {
+  width: 195px;
+  padding-left: 5px;
+  border-left: medium none;
+}
+
+#requisitionSignOffDialog .column4,#requisitionSignOffDialog .content .column4 {
+  width: 102px;
+  padding-left: 5px;
+  border-left: medium none;
+}
+
+#requisitionSignOffDialog .column5,#requisitionSignOffDialog .content .column5 {
+  width: 50px;
+  text-align: center;
+  line-height: 0;
+  border-left: medium none;
+}
+
+#requisitionSignOffDialog .content {
+  overflow-y: scroll;
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+#requisitionSignOffDialog .row {
+  height: 41px;
+  background-color: #FFFFFF;
+}
+
+#requisitionSignOffDialog .row li {
+  height: 35px;
+  padding-top: 5px;
+}
+
+#requisitionSignOffDialog .row .column1,#requisitionSignOffDialog .row .column2,#requisitionSignOffDialog .row .column3,#requisitionSignOffDialog .row .column4,#requisitionSignOffDialog .row .column5
+  {
+  border-top: none;
+}
+
+#requisitionSignOffDialog .column-row {
+  border: 1px solid #CCCCCC;
+  display: block;
+  float: left;
+  height: auto;
+  min-height: 34px;
+  overflow: visible !important;
+  text-align: left;
+  width: 50px;
+  word-wrap: break-word;
+}
+
+#requisitionSignOffDialog .content div:nth-child(2n+2) {
+  background-color: #F2F2F2;
+}
+/* End HB-3815 */
+.interview .dialog {
+  overflow: auto;
+  max-height: 300px;
+} /* HB-4079 */
+.title_dashboard {
+  text-indent: 0px;
+}
+
+.interviewScheduling_tab1 #statusBox tr.spacer>td {
+  padding-top: 4px;
+}
+
+.interviewScheduling_tab1 #statusBox tr.bottom>td {
+  padding-bottom: 4px;
+}
+
+.interviewScheduling_tab1 #statusBox tr.title_dashboard th.padding {
+  padding-left: 5px;
+}
+
+/* 3863*/
+.jobCandidateBlock .colPositions .jobName {
+  width: 196px;
+  margin: 0 auto;
+}
+
+*+html #candidatePositionList {
+  position: relative;
+}
+
+*+html .jobCandidateBlock .colPositions .jobName {
+  overflow: hidden;
+}
+
+*+html .jobCandidateBlock .headerCol {
+  left: 1px;
+}
+/* 3863*/
+.peoplepionter {
+  cursor: pointer;
+}
+
+#table_signoff {
+  overflow: auto;
+}
+
+#table_signoff label {
+  font-size: 13px;
+  display: block;
+  padding-top: 5px;
+}
+
+#table_signoff label #jobOpenDayReplace {
+  color: #FF3C3C;
+}
+
+.listPersonSignoffWrap {
+  padding: 10px;
+}
+
+.listPersonSignoffTbl {
+  width: 100%;
+}
+
+.listPersonSignoffTbl th,.listPersonSignoffTbl td {
+  border-bottom: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+  background-color: #ffffff;
+  padding: 3px 0;
+  text-align: left;
+}
+
+.listPersonSignoffTbl th {
+  background-color: #E6E6E6;
+  text-align: center;
+}
+
+.listPersonSignoffTbl td {
+  text-indent: 3px;
+}
+
+.listPersonSignoffTbl .Alt td {
+  background-color: #F2F2F2;
+}
+
+.resizable_window #jobHeader h2 {
+  letter-spacing: 0;
+  padding-top: 5px;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+#jobHeader {
+  min-height: 28px;
+}
+
+#openFromDate,#openToDate {
+  margin-top: 2px;
+  height: 13px !important;
+  padding: 1px 1px 0 1px;
+  border: 1px;
+  line-height: 14px;
+}
+
+#openFromDate.openFromDateJa {
+  margin-left: 7px;
+}
+
+#jobHeader select {
+  height: 16px;
+}
+
+.jobCandidateBlock table tr.headerRow {
+  height: 17px;
+}
+
+.jobCandidateBlock table tr.headerRow th,.jobCandidateBlock table tr.headerRow th label {
+  line-height: 17px;
+}
+
+.classLabel {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.table_window.jobCandidateBlock table.positionCandidateList tr {
+  background: transparent;
+}
+
+.topSectionBlock {
+  height: auto;
+  padding-bottom: 0;
+  position: relative;
+}
+
+.topSectionBlock .blue_header {
+  height: 30px;
+}
+
+.topSectionBlock .blue_header input[type="submit"] {
+  float: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.topSectionBlock .topSectionContent {
+  height: 152px;
+  display: none;
+}
+
+.topSectionBlock .blockMessage {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 18px;
+  right: 0;
+  background: #cccccc;
+  z-index: 5;
+  color: #fff;
+}
+
+.topSectionBlock .scroll-pane-wrapper {
+  height: 152px;
+  width: 300px;
+}
+
+.scoreCardBlock.topSectionBlock .scroll-pane-wrapper {
+  width: 290px;
+}
+
+#mainContent .deleted-job-log-div {
+  float: right;
+}
+
+#deletedJobLogDialog table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#deletedJobLogDialog table td, #deletedJobLogDialog table th {
+  border : solid 1px #AAAAAA;
+  padding-left: 5px;
+}
+
+#deletedJobLogDialog table th {
+  background-color: #DDDDDD;
+}

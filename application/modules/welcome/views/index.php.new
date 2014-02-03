@@ -1,0 +1,340 @@
+<?php
+/**
+ * @file index.php
+ * Welcome module default view.
+ */
+?>
+<!DOCTYPE html>
+<html lang="en" style="" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <meta charset="utf-8"/>
+    <title>Kompas Career</title>
+    <meta name="keywords" content="flat bootstrap, bootstrap themes, creative responsive websites, illustration bootstrap design, blue responsive themes, mobile menu website"/>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+
+    <meta property="og:title" content="Kompas Career"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://kompasgramedia.com/career"/>
+    <meta property="og:site_name" content="Kompas Career"/>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="public/assets/css/jquery.bxslider.css"/>
+    <link rel="stylesheet" href="public/assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="public/assets/css/animate.css"/>
+    <link href="public/assets/css" rel="stylesheet" type="text/css"/>
+
+    <link rel="stylesheet" href="public/assets/css/main.css"/>
+    <link rel="stylesheet" href="public/assets/css/custom-styles.css"/>
+    <link rel="shortcut icon" href="http://kompasgramedia.hbcareers.com/sites/default/files/czr_css/595/logo/favicon.png" />
+    <script async="" src="public/assets/js/analytics.js"></script>
+    <script src="public/assets/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
+<body>
+    <!--<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="http://r.local"><img src="public/assets/images/img/logo-trans.png" alt="Logo"></a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav pull-right">
+                        <li><a href="http://kompasgramedia.com/business">Business</a></li>
+                        <li><a href="http://kompasgramedia.com/newsrelease">News Release</a></li>
+                        <li><a href="http://kompasgramedia.com/socialcare">Social Care</a></li>
+            			<li><a href="http://kompasgramedia.com/events">Events</a></li>
+            			<li><a href="http://kompasgramedia.hbcareers.com/">Career</a></li>
+            			<li><a href="/career/vacancy">Submit CV</a></li>
+            			<li><a href="http://kompasgramedia.com/gallery/foto">Gallery</a></li>
+            			<li><a href="http://kompasgramedia.com/community">Community</a></li>
+            			<li><a href="http://kompasgramedia.com/map">Map</a></li>
+                        <li class="sign-up"><a href="/career/register"><span class="white"> Log In</span></a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            <!--</div>
+        </div>
+    </div>-->
+    <div class="page-header" id="header">
+        <!--Header Section-->
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="row text-center">
+                        <div class="span10 offset1">
+							<img src="public/assets/images/img/header1.jpg" alt="Title" width="1170px"/>
+                            <h1>Valuable moments with Kompas Gramedia</h1><br/>
+                        </div>
+                    </div>
+                </div>
+            </div><!--End Span12-->
+        </div>
+    </div>
+    <!--Home Content-->
+    <section id="home-content">
+        <div class="container">
+            <div class="row">
+                <!--Section 1-->
+                <a href="#content">
+                    <div class="span4 text-center home-box">
+                        <i><img src="public/assets/images/img/3.png" /></i>
+                        <h3>Working with us</h3>
+                        <p>Working for Kompas Gramedia offers a great opportunity to gain multi-industry experience in a nationwide company.</p>
+                    </div>
+                </a>
+                <!--Section 2-->
+                <a href="#business">
+                    <div class="span4 text-center home-box">
+                        <i><img src="public/assets/images/img/2.png" /></i>
+                        <h3>Business Area</h3>
+                        <p>Before applying, here are the things you need to know about our business lines.</p>
+                    </div>
+                </a>
+                <!--Section 3-->
+                <a href="#career">
+                    <div class="span4 text-center home-box">
+                        <i><img src="public/assets/images/img/career.png" /></i>
+                        <h3>Career Profiles</h3>
+                        <p>We challenge you to be part of us, to live your passion in a homey workplace and with our culture of always winning the heart, together we collaborate for success for a better Indonesia.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!--Content Section-->
+    <section id="content">
+        <div class="container">
+            <div class="row margin-30">
+                <div class="span8 text-center offset2">
+                    <h1 class="dark-gray">Working with us</h1>
+                </div>
+            </div>
+            <div class="row margin-30">
+                <div class="span6">
+                    <h4>Collaborate for Success</h4>
+                    <p><a name="collaborate-for-success" id="collaborate-for-success"></a></p>
+                    <p class="gray"><img alt="" height="86" src="http://kompasgramedia.hbcareers.com/sites/default/files/field/image/logo-text02.png" style="width: 130px; height: 85px; float: left; margin-right: 10px;" width="137" /> Working for Kompas Gramedia offers a great opportunity to gain multi-industry experience in a nationwide company. We have more than 16,000 employees who work in media publishing, printing, manufacturing, book publishing, retail business, hospitality and event services all over Indonesia. Collaboration between the multi-industry is crucial to gain competitive advantage. If you are a person who passionate to learn and collaborate, then KG is a right place for you. Together, we can <strong>Collaborate for Success!!! </strong></p>
+                    <p><a name="homey-workplace" id="homey-workplace"></a></p>
+                    <h4>Homey Workplace</h4>
+                    <p class="gray"><img alt="" height="86" src="http://kompasgramedia.hbcareers.com/sites/default/files/field/image/logo-text03.png" style="float: right; margin-right: 10px;" width="137" />People of Kompas Gramedia come to work with passion and energy that sparked from a workplace that is so homey that it feels like home. We have more than 27 different employee communities to support our hobby and various employee gathering events that bonded our relationship more thanjust common coworkers. We are a tight group of individuals who works in<strong> a Homey Workplace</strong>.</p>
+                    <p><a name="live-your-passion" id="live-your-passion"></a></p>
+                    <h4>Live your Passion</h4>
+                    <p class="gray"><img alt="" height="86" src="http://kompasgramedia.hbcareers.com/sites/default/files/field/image/logo-text04.png" style="float: left; margin-right: 10px;" width="137" />Kompas Gramedia built upon a strong passion by its founders. Their initial passion is in using journalism to create a better Indonesia. Today, we are still running our business with the same strong passion. Still for the objective to make Indonesia a better place, we are now providinga wide range of opportunities that you can <strong>Live Your Passion</strong> in it. For a better understanding of what kind of passion we’re talking about, please check what our people said in <a href="/content/our-story">our story</a></p>
+                    <p><a name="win-the-heart" id="win-the-heart"></a></p>
+                </div>
+                <div class="span6">
+                    <h4>Win the Heart</h4>
+            		<p class="gray"><img alt="" src="http://kompasgramedia.hbcareers.com/sites/default/files/field/image/logo-text05.png" style="float: right; margin-right: 10px;" />We are a company that using our talent to delight our customers. <strong>Winning customers’ heart</strong> is our commitment. For 50 years, we embody the commitment to create a better Indonesia through products that have enlightening values.</p>
+            		<p><a name="reinvent-indonesia" id="reinvent-indonesia"></a></p>
+            		<h4>Reinvent Indonesia</h4>
+            		<p class="gray"><img alt="" height="85" src="http://kompasgramedia.hbcareers.com/sites/default/files/field/image/logo-text06.png" style="float: left; margin-right: 10px;" width="137" />Our commitment to create a better Indonesia is not only a slogan. We actively <strong>Reinvent Indonesia</strong> through our numerous Educating Products, thousands Cultural Programs and Supports for Education.As a small example: our Bentara Budaya have been promoting cultural prolifiration for decades and we are supporting Indonesia Mengajar as Media Partner.</p>
+            		<p><a name="our-employee-value-preposition" id="our-employee-value-preposition"></a></p>
+            		<h4>Our Employee Value Preposition</h4>
+            		<p class="gray"><img alt="" height="85" src="http://kompasgramedia.hbcareers.com/sites/default/files/field/image/logo-text07.png" style="float: right; margin-right: 10px;" width="137" />Now, we challenge you to be part of us, to live your passion in a homey workplace, with our culture of always winning the heart, together we collaborate for success for a better Indonesia.</p>
+            		<p class="gray">We invite you to explore career opportunities at Kompas Gramedia through our career page</p>
+                </div>
+            </div><!--End Row-->
+        </div>
+    </section>
+    <section id="business">
+        <div class="container">
+			<div class="row margin-30">
+				<div class="span8 text-center offset2">
+				  <h1 class="dark-gray">What are our business line?</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span12 margin-50">
+					<ul class="nav nav-tabs" id="serviceTab">
+						<li><a data-toggle="tab" href="#1">Print</a></li>
+						<li><a data-toggle="tab" href="#2">Digital</a></li>
+						<li><a data-toggle="tab" href="#3">Electronic</a></li>
+						<li><a data-toggle="tab" href="#4">Media Service</a></li>
+						<li><a data-toggle="tab" href="#5">Retail and Publishing</a></li>
+						<li><a data-toggle="tab" href="#6">Manufacture and Printing</a></li>
+						<li><a data-toggle="tab" href="#7">Hospitality</a></li>
+						<li><a data-toggle="tab" href="#8">Event</a></li>
+						<li><a data-toggle="tab" href="#9">Education</a></li>
+						<li><a data-toggle="tab" href="#10">Corporate</a></li>
+					</ul>
+					<div class="tab-content">
+						<div id="1" class="tab-pane fade active in text-center">
+							<h3>Print Media</h3>
+							<p class="white">After the success of the magazine Intisari released on 17 August 1963, we launched KOMPAS a national daily newspaper, first released on 28 June 1965. Today we have up to 40 daily and periodical news papers and tabloids, more than 80 titles of magazines with wide various segmentations. To manage all of this huge number of products, the organization divided into several group specializing in print media such as KOMPAS, Group of Regional Newspaper, Group of Magazine, Sports & Health Media and KONTAN.</p>
+						</div>
+						<div id="2" class="tab-pane fade text-center">
+							<h3>Digital Media</h3>
+							<p class="white">In 1998 we established Kompas.com and it has growing as one of the top news digital media in Indonesia. Today we have more than 50 sites of online media as the second platform for our pinted media products.</p>
+						</div>
+						<div id="3" class="tab-pane fade text-center">
+							<h3>Electronic Media</h3>
+							<ul class="white"><li>Sonora Radio network was on the air at the first time in 1972 and has expanding throughout 15 cities in Indonesia and still growing. To capture other segmentation, we established Motion Radio under Gramedia Group of Magazine supervision.</li>
+							<li>Kompas TV network, a high definition quality network television was on air at the first time in 2009 and in 2011 as content provider it has served more than 10 local TV stations in most of Indonesia’s island.</li></ul>
+						</div>
+						<div id="4" class="tab-pane fade text-center">
+							<h3>Media Services</h3>
+							<p class="white">Media Services business is meant to be the supporting function specalized in circulating, distributing and advertising the media. There for we have several sister companies for these purposes, such as Transito AD, Jasatama Polamedia, Corporate Circulation and Corporate Advertising.</p>
+						</div>
+						<div id="5" class="tab-pane fade text-center">
+							<h3>Retail and Publishing</h3>
+							<ul class="white"><li>The first Gramedia Book Store was open in 1970, manage by Group of Retail Business, a sister company of Kompas Gramedia, which now has grown up to 103 book stores all over Indonesia.</li>
+							<li>To publish all our printed media, Kompas Gramedia has Group of Book Publishing since 1974 and it has 6 names of publishers and 1 more from KOMPAS.</li></ul>
+						</div>
+						<div id="6" class="tab-pane fade text-center">
+							<h3>Manufacture and Printing</h3>
+							<ul class="white"><li>Graha Kerindo Utama, another diversivied business of Kompas Graemdia, since its inception in 1989 it has committed as a specialist manufacturer in converting tissue paper (Tessa, Multi, Dynasty) which now has grown in producing baby diapers (Peemo baby diapers) and various packaging services</li>
+							<li>Gramedia Printing, was operating for the first time in 1972 to support all the media printed business and also to capture external market. In 1997 we developed remote printing technology that enable us to produce printed media in some cities (now we have 9 printing sites) at the same time then it has became the biggest media printed network in Indonesia</li></ul>
+						</div>
+						<div id="7" class="tab-pane fade text-center">
+							<h3>Hospitality</h3>
+							<p class="white">Kompas Gramedia diversified its business portfolio holding in 1981 embarking into the Hospitality sector. First opening was Santika Hotel in Bandung, and after a successful entry into the market development continued to other strategically placed cities around the Indonesia Archipelago, now it has more than 50 hotels. We complete the sustainable growth underpinning Santika’s competitive edge which has now repositioned to cater to a wider client base, from two star budget hotels (Amaris Hotel) to luxurious villa properties (The Royal Collection, The Kayana, and The Samaya)</p>
+						</div>
+						<div id="8" class="tab-pane fade text-center">
+							<h3>Event Services</h3>
+							<p class="white">ACT, a Brand Activation business from Gramedia Majalah. Its an integrated marketing approach to our clients. We do communities, activations, we create offline events for our clients.</p>
+						</div>
+						<div id="9" class="tab-pane fade text-center">
+							<h3>Education</h3>
+							<ul class="white"><li>ELTI Gramedia, a learning institute for English language has grown from 1981 in Jakarta. Joined with Kompas Gramedia in 1989 and since then it has expanding up to 10 cities in Indonesia.</li>
+							<li>In 2005 Kompas Gramedia established University Multimedia Nusantara at Serpong, in Banten Province. UMN is an institution of higher learning which information and communication technology is the foundation of any learning process. With the target as the inspiration for the presence of a new educational paradigm for Indonesian youth to produce competent graduates and entrepreneurial technology-based (Technopreneurship).</li></ul>
+						</div>
+						<div id="10" class="tab-pane fade text-center">
+							<h3>Corporate</h3>
+							<p class="white">In supporting all of our business line, we have several functional corporation such as Corporate IT, Corporate Finance, Corporate Communication, Corporate Facility Management, Corporate Human Resources, Corporate Comptroller, Corporate Finance & Legal.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="career">
+        <div class="container">
+            <div class="row margin-30">
+                <div class="span8 text-center offset2">
+                    <h1 class="dark-gray">What do we offer?</h1>
+                </div>
+            </div>
+
+            <div class="row margin-30">
+                <div class="span6">
+                    <h4>What Do We Offer?</h4>
+                    <ul class="blue-bullet">
+                        <li>
+                            Kompas Gramedia is one of the heritage local media industry which now has expand through diverse business areas, which you can be a part of it and be known as the member of the leading local industry in Indonesia.
+                        </li>
+                        <li>
+    					   Be a part of a diverse big team. With diverse business areas and products, leads the cultures blended into a unique mix and diverse. This allows you to understand and connect to the needs of the consumers and customers and to continue to innovate in everything we do. It also brings you experience to join the journey in collaborationg with people from different backgrounds, ideas and passions.
+                        </li>
+                        <li>
+    					   Development programs that enrich your soft and hard skills to accelerate your career.</li>
+                        <li>
+    					   We understand work life balance has always been an issue for workers. KG provides various activities for all its member to help you stay in balance. There are 27 different communities for KG's member to be the place for you to express your self more and many forums, gatherings and events held for our internal celebrations.</li>
+                        <li>
+    					   The kind of competitive compensation and employee's welfare.</li>
+                    </ul>
+                </div>
+	           <div class="span6">
+                    <h4>How can you develop your self in KG?</h4>
+                    <p>We encourage you to build your career with living your passion based on a solid ground and a good path of development . Together with your hirarchies, you will find lots of opportunities to implement your development programs.</p>
+                    <ul class="blue-bullet">
+                        <li><strong>Individual Development Program</strong>, our ongoing individual performance management process &amp; rewards, suits individually which determined by our talent management system.</li>
+                        <li><strong>Assessment Center Kompas Gramedia</strong>, our internal assessment center equipted with certified assessors that are specialized in profiling each incumbent to measure up your competencies and finding the gaps, which enclosed with professional recommendation for individual development program.</li>
+                        <li><strong>Learning &amp; Development</strong>, our one-stop shop for all learning and capability building activities across units within Kompas Gramedia.</li>
+                        <li><strong>Short-term Assignments</strong>, our program in exposing employees to work beyond their daily basis. This could be a short-term assignment in another function or unit or a project based assignment.</li>
+                    </ul>
+	           </div>
+	           <div class="row margin-30">
+		          <div class="span11 text-center offset1">
+			         <h3 class="white">What we expect you to be by joining KG?</h3>
+			         <p class="white">Be the people that bring a better life and meaningful for your self, for the company, and for Indonesia. Check out our values in this video below.</p>
+		          </div>
+	           </div>
+	           <div class="row margin-30">
+                    <div class="span9 text-center offset2">
+                        <div class="player">
+                            <iframe width="640px" height="360px" src="//www.youtube.com/embed/FlnJ5Ut02qs?width=640px&amp;height=360px&amp;autoplay=0&amp;hd=1&amp;rel=0&amp;autohide=2&amp;showinfo=1&amp;modestbranding=0&amp;theme=dark&amp;iv_load_policy=1&amp;start=0&amp;wmode=opaque" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	   </div>
+    </section>
+
+    <!--Message-->
+    <section id="message">
+        <div class="container">
+            <div class="row">
+                <div class="span10 offset1 text-center">
+                    <h4 class="gray">“We challenge you to be part of us, to live your passion in a homey workplace and with our culture of always winning the heart, together we collaborate for success for a better Indonesia.”</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--Bottom Section-->
+
+    <!--Clients Section-->
+    <section id="clients">
+        <div class="container">
+            <div class="row clients text-center">
+                <!--Insert Client Logos Below-->
+                <div class="span2">
+                    <a href="http://rnd.unpad.ac.id/kompas/#"><img src="http://kompasgramedia.hbcareers.com/sites/default/files/field/image/49.png" alt="Title"></a>
+                </div>
+
+                <div class="span2">
+                    <a href="http://rnd.unpad.ac.id/kompas/#"><img src="http://kompasgramedia.hbcareers.com/sites/default/files/field/image/51.png" alt="Title"></a>
+                </div>
+
+                <div class="span2">
+                    <a href="http://rnd.unpad.ac.id/kompas/#"><img src="http://kompasgramedia.hbcareers.com/sites/default/files/field/image/52.png" alt="Title"></a>
+                </div>
+
+                <div class="span2">
+                    <a href="http://rnd.unpad.ac.id/kompas/#"><img src="http://kompasgramedia.hbcareers.com/sites/default/files/field/image/53.png" alt="Title"></a>
+                </div>
+
+                <div class="span2">
+                    <a href="http://rnd.unpad.ac.id/kompas/#"><img src="http://kompasgramedia.hbcareers.com/sites/default/files/w41.png" alt="Title"></a>
+                </div>
+
+                <div class="span2">
+                    <a href="http://rnd.unpad.ac.id/kompas/#"><img src="http://kompasgramedia.hbcareers.com/sites/default/files/w42.png" alt="Title"></a>
+                </div>
+            </div>
+        </div>
+	<!--End Row-->
+    </section>
+
+    <section id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="span12 text-center">
+                    <p>@ Copyright 2013 Kompas Gramedia. All Rights Reserved.</a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span10 offset1 text-center">
+                    <!--Social Icons-->
+                    <ul class="social-icons">
+    					<li><a class="facebook" href="http://www.facebook.com/workwith.kg" target="_blank"><img src="public/assets/images/img/facebook.png" /></a></li>
+    					<li><a class="twitter" href="http://www.twitter.com/workwithkg" target="_blank"><img src="public/assets/images/img/twitter.png" /></a></li>
+    					<li><a class="youtube" href="http://www.youtube.com/workwithkg" target="_blank"><img src="public/assets/images/img/youtube.png" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="public/assets/js/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
+    <script src="public/assets/js/bootstrap.min.js"></script>
+    <script src="public/assets/js/main.js"></script>
