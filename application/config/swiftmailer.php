@@ -9,6 +9,7 @@
  | 	  'file' = Use the default CI config or use from a config file
  | 	  array  = Manually set your email config settings
  */
+ require_once 'application/swiftmailer/swift_required.php';
 $config['email_config'] = array(
 	'mailtype' => 'html',
 	'smtp' => 'smtp.unpad.ac.id',
