@@ -42,10 +42,10 @@
 
   <title>Kompas Gramedia |</title>
 
-<link type="text/css" rel="stylesheet" href="/resources/css_7l.css" media="all">
-<link type="text/css" rel="stylesheet" href="/resources/css_hF.css" media="all">
-<link type="text/css" rel="stylesheet" href="/resources/css_te.css" media="all">
-<link type="text/css" rel="stylesheet" href="/resources/kompasgramedia_hbcareers_com.css" media="all">
+<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css_7l.css" media="all">
+<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css_hF.css" media="all">
+<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css_te.css" media="all">
+<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/kompasgramedia_hbcareers_com.css" media="all">
 
 <!--[if lte IE 7]>
 <link type="text/css" rel="stylesheet" href="/resources/ie.css" media="all" />
@@ -54,8 +54,8 @@
 <!--[if IE 6]>
 <link type="text/css" rel="stylesheet" href="/resources/ie6.css" media="all" />
 <![endif]-->
-<script id="twitter-wjs" src="/resources/widgets.js"></script>
-<script type="text/javascript" async="" src="/resources/ga.js"></script>
+<script id="twitter-wjs" src="<?php echo base_url(); ?>resources/widgets.js"></script>
+<script type="text/javascript" async="" src="<?php echo base_url(); ?>resources/ga.js"></script>
 
 
 </head>
@@ -70,7 +70,7 @@
       <div class="custombackground">
         <div class="section clearfix">
               <a href="/" title="Home" rel="home" id="logo">
-          <img src="/resources/logo-trans.png" alt="Home">
+          <img src="<?php echo base_url()?>/resources/logo-trans.png" alt="Home">
         </a>
               <div id="name-and-slogan">
 				<div id="site-name" class="element-invisible">

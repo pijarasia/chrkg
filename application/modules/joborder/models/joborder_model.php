@@ -1120,16 +1120,14 @@ class Joborder_Model extends MY_Model
 	public function populate_applicant_by_selection_step($id = null, $all = array(), $result = array('black' => '', 'yellow' => '', 'red' => '', 'green' =>'')){
 
 		$url = base_url();
-		$all = Underbar\ArrayImpl::chain($all)
-					->where(['stepsSelectionID' => $id]);
-		$black = Underbar\ArrayImpl::chain($all)
-					->where(['processStatus' => 1]);
+		$all = Underbar\ArrayImpl::chain($all)->where(array('stepsSelectionID' => $id));
+		$black = Underbar\ArrayImpl::chain($all)->where(array('processStatus' => 1));
 		$yellow = Underbar\ArrayImpl::chain($all)
-					->where(['processStatus' => 2]);
+					->where(array('processStatus' => 2));
 		$red = Underbar\ArrayImpl::chain($all)
-					->where(['processStatus' => 4]);
+					->where(array('processStatus' => 4));
 		$green = Underbar\ArrayImpl::chain($all)
-					->where(['processStatus' => 3]);
+					->where(array('processStatus' => 3));
 
 		if (count($black) > 0) {
 			$sum = count($black);

@@ -8,10 +8,10 @@ body, #page, #main-wrapper{
 	background:none; /*kill default background*/
 	}
 #page-wrapper{/*main bg only*/
-	background:url(/resources/bg-main-full.png) no-repeat center 0;
+	background:url(bg-main-full.png) no-repeat center 0;
 	}
 #header-wrapper, #main-wrapper, #page #messages, #featured{/*drop shadow bg only*/
-	background:url("/resources/bg-body1.png") repeat-y scroll center 0 transparent;
+	background:url("bg-body1.png") repeat-y scroll center 0 transparent;
 	}
 #header-wrapper{
 	margin-bottom:0;
@@ -129,7 +129,7 @@ body.rounded .sidebar {
 /*side bar right*/
 #sidebar-second.sidebar #block-hboss-cxn-search-hbsearch-block,
 #sidebar-second.sidebar #block-hboss_cxn_search-hbsearch-block-85/*after log in*/{
-	background:url(/resources/applynow.png) no-repeat 18px 0;
+	background:url(applynow.png) no-repeat 18px 0;
 	padding: 41px 0 0 20px;
 	}
 #block-hboss-cxn-search-hbsearch-block h2.block-title,
@@ -149,7 +149,7 @@ body.rounded .sidebar {
 	}
 /*job search form*/
 input#perform-search{
-	background:url("/resources/button-search.png") repeat scroll 0 0 transparent;
+	background:url("button-search.png") repeat scroll 0 0 transparent;
 	border: 0 none;
     border-radius: 0 0 0 0;
     display: block;
@@ -170,7 +170,7 @@ input#perform-search{
 	}
 #header .custombackground{
 	border-bottom:2px solid #005288; /*dark blue*/
-	background:url("/resources/bg-header2.png") right 0 no-repeat;
+	background:url("bg-header2.png") right 0 no-repeat;
 	filter:none;
 	background-color: #FFF;
 	}
@@ -187,12 +187,12 @@ input#perform-search{
 	font-size: 0.9em;
 	}
 #main-menu-links, #main-menu ul.nice-menu{
-	background:url(/resources/bg-mainmenu.png) repeat-x 0 0;
+	background:url(bg-mainmenu.png) repeat-x 0 0;
 	border:1px solid #c7c7c7;
 	filter:none;
 	}
 #main-menu-links li, #main-menu ul.nice-menu li{
-	background-image:url(/resources/mainmenu-border.png);
+	background-image:url(mainmenu-border.png);
 	}
 body #main-menu{
 	padding-top:15px;
@@ -203,7 +203,7 @@ body #main-menu{
 
 /**bof footer - copyright**/
 body #footer-wrapper{
-	background: url("/resources/bg-footer.png") no-repeat scroll center 0 transparent;
+	background: url("bg-footer.png") no-repeat scroll center 0 transparent;
     width: auto; /*reset system css from 960px to 100% for the bg image. Move 960 to "#footer-wrapper"*/
 	filter:none;
 	}
@@ -233,7 +233,7 @@ body #preview #maincontent, #maincontent{
 	}
 /*page header*/
  h1#page-title, #content .region-content h1{
-	 background: url("/resources/bg-page-title.png") no-repeat scroll 0 0 transparent;
+	 background: url("bg-page-title.png") no-repeat scroll 0 0 transparent;
     border-radius: 3px 3px 3px 3px;
     color: #005288;
     font-size: 1.35em;

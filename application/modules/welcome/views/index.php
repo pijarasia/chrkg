@@ -41,7 +41,7 @@
 
 
   <div class="content">
-    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p><img alt="" src="/resources/pic_depan_v3_1.png"></p>
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p><img alt="" src="<?php echo base_url() ?>resources/pic_depan_v3_1.png"></p>
 </div></div></div>  </div>
 
 
@@ -66,19 +66,19 @@
 <h3>
 			<a href="http://kompasgramedia.hbcareers.com/content/working-with-us">Working with us</a></h3>
 <div>
-			<img alt="" src="/resources/3.png" style="width: 111px; height: 69px; float: left; margin: 3px 5px;">Working for Kompas Gramedia offers a great opportunity to gain multi-industry experience in a nationwide company. We have...<em><a href="http://kompasgramedia.hbcareers.com/content/working-with-us">readmore</a></em></div>
+			<img alt="" src="<?php echo base_url() ?>resources/3.png" style="width: 111px; height: 69px; float: left; margin: 3px 5px;">Working for Kompas Gramedia offers a great opportunity to gain multi-industry experience in a nationwide company. We have...<em><a href="http://kompasgramedia.hbcareers.com/content/working-with-us">readmore</a></em></div>
 </div>
 <div class="front_column">
 <h3>
 			<a href="http://kompasgramedia.hbcareers.com/content/business-area">Business Area</a></h3>
 <div>
-			<img alt="" src="/resources/2.png" style="width: 111px; height: 69px; float: left; margin: 3px 5px;">Before applying, here are the things you need to know about our business lines..<em><a href="http://kompasgramedia.hbcareers.com/content/business-area">readmore</a></em></div>
+			<img alt="" src="<?php echo base_url() ?>resources/2.png" style="width: 111px; height: 69px; float: left; margin: 3px 5px;">Before applying, here are the things you need to know about our business lines..<em><a href="http://kompasgramedia.hbcareers.com/content/business-area">readmore</a></em></div>
 </div>
 <div class="front_column">
 <h3>
 			<a href="http://kompasgramedia.hbcareers.com/content/career-profile">Career Profiles</a></h3>
 <div>
-			<img alt="" src="/resources/frontpage-career-1.png" style="width: 111px; height: 69px; float: left; margin: 3px 5px;">We challenge you to be part of us, to live your passion in a homey workplace and with our culture of always winning the heart, together we collaborate for success for a better Indonesia...<em><a href="http://kompasgramedia.hbcareers.com/content/career-profile">readmore</a></em></div>
+			<img alt="" src="<?php echo base_url() ?>resources/frontpage-career-1.png" style="width: 111px; height: 69px; float: left; margin: 3px 5px;">We challenge you to be part of us, to live your passion in a homey workplace and with our culture of always winning the heart, together we collaborate for success for a better Indonesia...<em><a href="http://kompasgramedia.hbcareers.com/content/career-profile">readmore</a></em></div>
 </div>
 </div>
 <div id="front_content2">
@@ -90,7 +90,7 @@
 <ul><li>
 &nbsp;</li>
 <li>
-<img src="/resources/untitled-1.jpg"><div class="graytext">
+<img src="<?php echo base_url() ?>resources/untitled-1.jpg"><div class="graytext">
 <font style="font-size:11px;">Tgl 20 September 2013</font></div>
 <div class="news-text">
 <font style="font-size:11px;">Penandatanganan MOU dengan Universitas Udayana...<a href="http://kompasgramedia.hbcareers.com/#">readmore</a></font></div>
@@ -100,7 +100,7 @@
 &nbsp;</div>
 </li>
 <li>
-<img src="/resources/gam.jpg"><div class="graytext">
+<img src="<?php echo base_url() ?>resources/gam.jpg"><div class="graytext">
 <font style="font-size:11px;">2 - 13 September 2013,Tiap Senin, Rabu,Jumat, 8AM.</font></div>
 </li>
 <li>
@@ -112,7 +112,7 @@
 &nbsp;</div>
 </li>
 <li>
-<img src="/resources/news-thumb.png"><div class="graytext">
+<img src="<?php echo base_url() ?>resources/news-thumb.png"><div class="graytext">
 <font style="font-size:11px;">12-14 September 2013</font></div>
 <div class="news-text">
 <font style="font-size:11px;">UI Career Expo @ Balairung UI, Jakarta...<a href="http://kompasgramedia.hbcareers.com/#">readmore</a></font></div>
@@ -122,7 +122,7 @@
 &nbsp;</div>
 </li>
 <li>
-<img src="/resources/news-thumb.png"><div class="graytext">
+<img src="<?php echo base_url() ?>resources/news-thumb.png"><div class="graytext">
 <font style="font-size:11px;">Tgl 30-31 Agustus 2013</font></div>
 <div class="news-text">
 <font style="font-size:11px;">Kompas Karir Fair Jakarta @ Balai Kartini Jakarta...<a href="http://kompasgramedia.hbcareers.com/#">readmore</a></font></div>
@@ -132,7 +132,7 @@
 &nbsp;</div>
 </li>
 <li>
-<img src="/resources/1juni2013.jpg"><div class="graytext">
+<img src="<?php echo base_url() ?>resources/1juni2013.jpg"><div class="graytext">
 <font style="font-size:11px;">Tgl 1 Juni 2013</font></div>
 <div class="news-text">
 <font style="font-size:11px;">Penandatanganan MOU dengan Univ Muhamadiyah Malang...<a href="http://kompasgramedia.hbcareers.com/#">readmore</a></font></div>
@@ -140,7 +140,7 @@
 <li>
 &nbsp;</li>
 <li>
-<img src="/resources/brawijaya.jpg"><div class="graytext">
+<img src="<?php echo base_url() ?>resources/brawijaya.jpg"><div class="graytext">
 <font style="font-size:11px;">Tgl 31 Mei 2013</font></div>
 <div class="news-text">
 <font style="font-size:11px;">Penandatanganan MOU dengan Univ Brawijaya...<a href="http://kompasgramedia.hbcareers.com/#">readmore</a></font></div>
@@ -148,7 +148,7 @@
 <li>
 &nbsp;</li>
 <li>
-<img src="/resources/ykpn.jpg"><div class="graytext">
+<img src="<?php echo base_url() ?>resources/ykpn.jpg"><div class="graytext">
 <font style="font-size:11px;">Tgl 04 Maret 2013</font></div>
 <div class="news-text">
 <font style="font-size:11px;">Penandatanganan MOU dengan STIE YKPN...<a href="http://kompasgramedia.hbcareers.com/#">readmore</a></font></div>
@@ -156,7 +156,7 @@
 <li>
 &nbsp;</li>
 <li>
-<img src="/resources/usd.jpg"><div class="graytext">
+<img src="<?php echo base_url() ?>resources/usd.jpg"><div class="graytext">
 <font style="font-size:11px;">Tgl 04 Maret 2013</font></div>
 <div class="news-text">
 <font style="font-size:11px;">Penandatanganan MOU dengan Sanata Dharma Yogyakarta...<a href="http://kompasgramedia.hbcareers.com/#">readmore</a></font></div>
@@ -164,7 +164,7 @@
 <li>
 &nbsp;</li>
 <li>
-<img src="/resources/uajy.jpg"><div class="graytext">
+<img src="<?php echo base_url() ?>resources/uajy.jpg"><div class="graytext">
 <font style="font-size:11px;">Tgl 04 Maret 2013</font></div>
 <div class="news-text">
 <font style="font-size:11px;">Penandatanganan MOU dengan Univ Atmajaya Yogyakarta...<a href="http://kompasgramedia.hbcareers.com/#">readmore</a></font></div>
@@ -174,7 +174,7 @@
 &nbsp;</div>
 </li>
 <li>
-<img src="/resources/news-thumb.png"><div class="graytext">
+<img src="<?php echo base_url() ?>resources/news-thumb.png"><div class="graytext">
 <font style="font-size:11px;">Tgl 11 April 2013</font></div>
 <div class="news-text">
 <font style="font-size:11px;">Pembekalan untuk Dunia kerja bagi mahasiswa USD...<a href="http://kompasgramedia.hbcareers.com/#">readmore</a></font></div>
@@ -184,7 +184,7 @@
 &nbsp;</div>
 </li>
 <li>
-<img src="/resources/kuliah-umum-ecc-ugm.jpg"><div class="graytext">
+<img src="<?php echo base_url() ?>resources/kuliah-umum-ecc-ugm.jpg"><div class="graytext">
 <font style="font-size:11px;">Tgl 12 April 2013</font></div>
 <div class="news-text">
 <font style="font-size:11px;">Kuliah Umum di Friday In Depth ECC UGM...<a href="http://kompasgramedia.hbcareers.com/#">readmore</a></font></div>
@@ -194,7 +194,7 @@
 &nbsp;</div>
 </li>
 <li>
-<img src="/resources/news-thumb.png"><div class="graytext">
+<img src="<?php echo base_url() ?>resources/news-thumb.png"><div class="graytext">
 <font style="font-size:11px;">Tgl 18 Mei 2013</font></div>
 <div class="news-text">
 <font style="font-size:11px;">Kuliah umum dengan Rotaract Club Malioboro...<a href="http://kompasgramedia.hbcareers.com/#">readmore</a></font></div>
@@ -209,20 +209,20 @@
 <h3>Browse us</h3>
 <div id="front-animation">
 			<marquee behavior="scroll" direction="up" scrollamount="2">
-			<a href="http://www.gramediaprinting.com/" target="_blank"><img alt="http://www.gramediaprinting.com/" height="42" src="/resources/w48.png" width="166"></a>
-			<a href="http://www.grazera.com/" target="_blank"><img alt="http://www.gramediaonline.com/" src="/resources/grazera.jpg"></a>
-			<a href="http://www.gramediamajalah.com/" target="_blank"><img alt="http://www.gramediamajalah.com/" height="62" src="/resources/w41.png" width="193"></a>
-			<a href="http://www.tribunnews.com/" target="_blank"><img alt="http://www.tribunnews.com/" height="57" src="/resources/49.png" width="195"></a>
-			<a href="http://www.santika.com/" target="_blank"><img alt="http://www.santika.com/" height="85" src="/resources/w47.png" width="136"></a>
-			<a href="http://www.gramediapustakautama.com/" target="_blank"><img alt="http://www.gramediapustakautama.com/" height="76" src="/resources/56.png" width="115"></a>
-			<a href="http://www.kompaskampus.com/" target="_blank"><img alt="http://www.kompaskampus.com/" height="58" src="/resources/51.png" width="192"></a>
-			<a href="http://www.kompas.com/" target="_blank"><img alt="http://www.kompas.com/" height="32" src="/resources/w42.png" width="184"></a>
-			<a href="http://www.kompas.tv/" target="_blank"><img alt="http://www.kompas.tv/" height="33" src="/resources/w45.png" width="158"></a>
-			<a href="http://www.kontan.co.id/" target="_blank"><img alt="http://www.kontan.co.id/" height="70" src="/resources/52.png" width="181"></a>
-			<a href="http://bolanews.com/" target="_blank"><img alt="http://bolanews.com/" height="49" src="/resources/53.png" width="182"></a>
-			<a href="http://www.umn.ac.id/" target="_blank"><img alt="http://www.umn.ac.id/" height="67" src="/resources/w44.png" width="45"></a>
-			<a href="http://www.gku.co.id/" target="_blank"><img alt="http://www.gku.co.id/" height="80" src="/resources/54.png" width="156"></a>
-			<a href="http://sonora-network.com/" target="_blank"><img alt="http://sonora-network.com/" height="100" src="/resources/sonora.png" width="185"></a>
+			<a href="http://www.gramediaprinting.com/" target="_blank"><img alt="http://www.gramediaprinting.com/" height="42" src="<?php echo base_url() ?>resources/w48.png" width="166"></a>
+			<a href="http://www.grazera.com/" target="_blank"><img alt="http://www.gramediaonline.com/" src="<?php echo base_url() ?>resources/grazera.jpg"></a>
+			<a href="http://www.gramediamajalah.com/" target="_blank"><img alt="http://www.gramediamajalah.com/" height="62" src="<?php echo base_url() ?>resources/w41.png" width="193"></a>
+			<a href="http://www.tribunnews.com/" target="_blank"><img alt="http://www.tribunnews.com/" height="57" src="<?php echo base_url() ?>resources/49.png" width="195"></a>
+			<a href="http://www.santika.com/" target="_blank"><img alt="http://www.santika.com/" height="85" src="<?php echo base_url() ?>resources/w47.png" width="136"></a>
+			<a href="http://www.gramediapustakautama.com/" target="_blank"><img alt="http://www.gramediapustakautama.com/" height="76" src="<?php echo base_url() ?>resources/56.png" width="115"></a>
+			<a href="http://www.kompaskampus.com/" target="_blank"><img alt="http://www.kompaskampus.com/" height="58" src="<?php echo base_url() ?>resources/51.png" width="192"></a>
+			<a href="http://www.kompas.com/" target="_blank"><img alt="http://www.kompas.com/" height="32" src="<?php echo base_url() ?>resources/w42.png" width="184"></a>
+			<a href="http://www.kompas.tv/" target="_blank"><img alt="http://www.kompas.tv/" height="33" src="<?php echo base_url() ?>resources/w45.png" width="158"></a>
+			<a href="http://www.kontan.co.id/" target="_blank"><img alt="http://www.kontan.co.id/" height="70" src="<?php echo base_url() ?>resources/52.png" width="181"></a>
+			<a href="http://bolanews.com/" target="_blank"><img alt="http://bolanews.com/" height="49" src="<?php echo base_url() ?>resources/53.png" width="182"></a>
+			<a href="http://www.umn.ac.id/" target="_blank"><img alt="http://www.umn.ac.id/" height="67" src="<?php echo base_url() ?>resources/w44.png" width="45"></a>
+			<a href="http://www.gku.co.id/" target="_blank"><img alt="http://www.gku.co.id/" height="80" src="<?php echo base_url() ?>resources/54.png" width="156"></a>
+			<a href="http://sonora-network.com/" target="_blank"><img alt="http://sonora-network.com/" height="100" src="<?php echo base_url() ?>resources/sonora.png" width="185"></a>
 			</marquee>
 </div>
 </div>
@@ -285,7 +285,7 @@
 <div class="main-block-wrapper">
 
   <div class="content">
-    <a href="http://www.facebook.com/workwith.kg"><img src="/resources/facebook_32.png" width="32" height="32" alt="Facebook"></a><a href="https://twitter.com/@workwithKG"><img src="/resources/twitter_32.png" width="32" height="32" alt="Twitter"></a><a href="http://www.youtube.com/workwithkg"><img src="/resources/youtube_32.png" width="32" height="32" alt="YouTube"></a>  </div>
+    <a href="http://www.facebook.com/workwith.kg"><img src="<?php echo base_url() ?>resources/facebook_32.png" width="32" height="32" alt="Facebook"></a><a href="https://twitter.com/@workwithKG"><img src="<?php echo base_url() ?>resources/twitter_32.png" width="32" height="32" alt="Twitter"></a><a href="http://www.youtube.com/workwithkg"><img src="<?php echo base_url() ?>resources/youtube_32.png" width="32" height="32" alt="YouTube"></a>  </div>
 </div>
 </div>
   </div>
@@ -322,7 +322,7 @@
   </div>
         <div id="hboss-props" class="clearfix">
           <a href="http://kompasgramedia.com/">
-            Career Site powered by<br><img src="/resources/logo-trans.png" width="109" height="22" alt="HiringBoss"></a>
+            Career Site powered by<br><img src="<?php echo base_url() ?>resources/logo-trans.png" width="109" height="22" alt="HiringBoss"></a>
         </div>
       </div> <!-- /#footer -->
 
