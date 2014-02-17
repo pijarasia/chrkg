@@ -14,4 +14,4 @@ bin/*
 *.settings/
 .buildpath
 .project
-
+public/assets/cache
