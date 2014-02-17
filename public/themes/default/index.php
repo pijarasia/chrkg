@@ -95,7 +95,7 @@
 			<li class="menu-3977 menu-path-kompasgramediacom-gallery-foto even"><a href="http://kompasgramedia.com/gallery/foto" title="">GALLERY</a></li>
 			<li class="menu-3978 menu-path-kompasgramediacom-community odd"><a href="http://kompasgramedia.com/community" title="">COMMUNITY</a></li>
 			<li class="menu-3979 menu-path-kompasgramediacom-map even"><a href="http://kompasgramedia.com/map" title="">MAP</a></li>
-			<li class="menu-3979 menu-path-kompasgramediacom-map odd last"><a href="/career/login/" title="">LOGIN</a></li>
+			<li class="menu-3979 menu-path-kompasgramediacom-map odd last"><a href="<?php echo base_url(); ?>login/" title="">LOGIN</a></li>
 		</ul>
           <!-- span class="feed-icon"></span -->
           <div class="menu-hack menu-hack-right">&nbsp;</div>
