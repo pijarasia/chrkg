@@ -34,7 +34,7 @@
                         </div>
                         <?php echo form_close();?>
                         <!--id="lupa_password"-->
-                        <div style="padding: 0 6px 5px 7px;"><a href="register/forgot" style="cursor: pointer;"><?=lang('lupa_password')?></a></div>
+                        <div style="padding: 0 6px 5px 7px;"><a href="<? echo base_url(); ?>register/forgot" style="cursor: pointer;"><?=lang('lupa_password')?></a></div>
                     <?
                         } else {
                     ?>

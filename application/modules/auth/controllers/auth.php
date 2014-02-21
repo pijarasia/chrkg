@@ -44,6 +44,10 @@ public function logout(){
 	redirect('auth/login', 'refresh');
 }
 
+public function forgot(){
+    Template::render('login');
+}
+
   public function login() {
         if ($this->auth->logged_in())
         {
@@ -77,7 +81,6 @@ public function logout(){
                     break;
             }
         }
-
         $data["language"] = $this->session->userdata('language');
         $data["en"] = base_url()."login/en";
         $data["id"] = base_url()."login/id";
@@ -107,10 +110,10 @@ public function logout(){
         Assets::add_js($this->load->view('js/register', null, true),'inline');
 
         Assets::add_module_css('auth','custom.css');
-    $data['title'] = "Login";
+        $data['title'] = "Login";
 
-    $this->form_validation->set_rules('identity', 'Identity', 'required');
-    $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('identity', 'Identity', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
 
         //forgot password
         $data['forgot'] = $this->session->userdata('form_forgot');
@@ -168,7 +171,7 @@ public function logout(){
       }
     }
     else
-    {
+    {  
       $data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
       $data['identity'] = array('name' => 'identity',
@@ -256,7 +259,9 @@ public function forgot_password() {
 				else
 					echo lang('forgot_password_unsuccessful');
 		}
-	}
+	}else{
+        Template::render('login');
+    }
 }
 
 public function reset_password($code = NULL)	{
