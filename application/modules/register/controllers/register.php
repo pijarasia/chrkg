@@ -5,7 +5,7 @@
 * @created 10 May, 2013
 *
 **/
-class Register extends Authbreaker_Controller{
+class Register extends Base_Controller {
 	function __construct()
 	{
 	parent::__construct();
@@ -15,7 +15,7 @@ class Register extends Authbreaker_Controller{
 		$this->load->model('vacancy/vacancy_model','vacancy',TRUE);
 		$this->load->model('register_model','register',TRUE);
 		$this->load->model('applicant/applicant_model','applicant',TRUE);
-		$this->load->model('reference/reference_model','',TRUE);
+		$this->load->model('setting/reference_model','',TRUE);
 
 		if ($this->session->userdata('language') == "")
 		{
@@ -79,5 +79,26 @@ class Register extends Authbreaker_Controller{
 	Template::set($data);
 	Template::render('register');
 	}
+  
+  public function refresh()
+    {
+        if ($this->input->post('ajax'))
+        {
+            $this->load->library('session');
+            $this->load->helper('captcha');
+            $vals = array(
+                    'img_path'   => './captcha/',
+                    'img_url'    => base_url().'captcha/',
+                    'img_width'  => '100',
+                    'img_height' => '35',
+                    'border' => 0,
+                    'expiration' => 7200
+                );
+
+            $capC = create_captcha($vals);
+            echo $capC['image'];
+            $this->session->set_userdata('cap', $capC['word']);
+        }
+    }
 
 }

@@ -188,6 +188,7 @@
     $lang['posisi_organisasi'] = "Posisi";
 
     $lang['judul'] = "Judul";
+    $lang['error_worksought'] = 'Tolong isi minimal satu pilihan';
 
 /*********************************************************/
 /**

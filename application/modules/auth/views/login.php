@@ -6,7 +6,7 @@
 <body style="background:url(<?php echo base_url();?>public/assets/images/login_bg.jpg);position: absolute;left: 0px;top: 0px;z-index: -1000;width: 1349px;height: 269px;center 0 no-repeat #f1f4f9;">
     <div class="span2"></div>
                 <div class="loginarea">
-                <?
+                <?php
                     if ($forgot == false)
                     {
                 ?>
@@ -34,8 +34,8 @@
                         </div>
                         <?php echo form_close();?>
                         <!--id="lupa_password"-->
-                        <div style="padding: 0 6px 5px 7px;"><a href="<? echo base_url(); ?>register/forgot" style="cursor: pointer;"><?=lang('lupa_password')?></a></div>
-                    <?
+                        <div style="padding: 0 6px 5px 7px;"><a href="<?php echo base_url(); ?>register/forgot" style="cursor: pointer;"><?=lang('lupa_password')?></a></div>
+                    <?php
                         } else {
                     ?>
                         <?php echo form_open("register/activation");?>
@@ -54,17 +54,17 @@
                             </div>
                         </div>
                         <?php echo form_close();?>
-                    <?
+                    <?php
                         }
                     ?>
                     </span>
-                <?
+                <?php
                     }
                     else
                     {
                 ?>
                     <span id="forgots">
-                        <?
+                        <?php
                         if ($change == false)
                         {
                         ?>
@@ -83,7 +83,7 @@
                                 </div>
                             </div>
                         </form>
-                            <?
+                            <?php
                                 } else {
                             ?>
                         <form id="form_change" name="form_change" method="post">
@@ -131,7 +131,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?
+                            <?php
                                 }
                             ?>
                             <div style="padding: 0 6px;">
@@ -140,7 +140,7 @@
                             </div>
                             <?php echo form_close();?>
                     </span>
-                <?
+                <?php
                     }
                 ?>
                 </div>

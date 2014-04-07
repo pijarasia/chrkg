@@ -5,7 +5,7 @@
 * @created 10 May, 2013
 *
 **/
-class Register extends Authbreaker_Controller{
+class Register extends Base_Controller{
 //class Register extends Front_Controller {
     function __construct()
     {

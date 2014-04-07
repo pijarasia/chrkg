@@ -667,7 +667,7 @@ class Setting extends Admin_Controller {
 
     ));
     // Group Multiple Select
-    if ($this->input->is_ajax_request()) {
+    if (true) {//$this->input->is_ajax_request()) {
         $form_data = array('full_name','email','mobile_phone','password','hidden_id');
         foreach ($form_data as $val)
             $data[$val] = $this->input->post($val);

@@ -45,6 +45,10 @@ $route['login']		= 'auth/login';
 $route['logout']	= 'auth/logout';
 $route['logoff']	= 'auth/logoff';
 $route['register']	= 'auth/register';
+$route['register/error_captcha']	= 'auth/error_captcha';
+$route['register/register_applicant']	= 'auth/register_applicant';
+$route['register/send_activation']	= 'auth/send_activation';
+$route['verification/(:any)']	= 'auth/verification';
 
 //$route['vacancy']	= 'welcome/vacancy';
 

@@ -12,10 +12,10 @@
  require_once 'application/swiftmailer/swift_required.php';
 $config['email_config'] = array(
 	'mailtype' => 'html',
-	'smtp' => 'smtp.unpad.ac.id',
+	'smtp' => 'smtp.gmail.com',
 	'port' => '465',
 	'secure' => 'ssl',
-	'username' => 'trisna@unpad.ac.id',
-	'password' => 'k0d0kl0',
-	'from' => 'noreply@unpad.ac.id'
+	'username' => 'dev.blackyt@gmail.com',
+	'password' => 'blackyt7788',
+	'from' => 'noreply@dev.chrkg.com'
 );

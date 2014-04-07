@@ -253,5 +253,7 @@ $lang['reset_password'] = "Reset Password";
 $lang['ubah_password'] = "Change Password";
 $lang['new_password'] = "New Password";
 $lang['kirim_ulang'] = "Send Activation Code";
+
+$lang['error_worksought'] = 'Plese check one or more work sought';
 /* End of file form_lang.php */
 /* Location: ./application/config/language/english/form_lang.php */

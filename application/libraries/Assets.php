@@ -869,6 +869,7 @@ class Assets
 		// inserting them inside the shell.
 		foreach(self::$inline_scripts as $script)
 		{
+      $script  = str_replace(array('<script>','</script>'), array('',''),$script);
 			$output .= $script . "\n";
 		}
 
