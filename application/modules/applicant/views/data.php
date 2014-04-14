@@ -11,16 +11,16 @@
     </div>-->
         
     <!--<div class="btn-group btn-group-vertical">
-        <button class="btn btnData active"><?=lang('data_diri')?></button>
-        <button class="btn btnData"><?=lang('data_keluarga')?></button>
-        <button class="btn btnData"><?=lang('data_pendidikan')?></button>
-        <button class="btn btnData"><?=lang('data_pelatihan')?></button>
-        <button class="btn btnData"><?=lang('data_bahasa')?></button>
-        <button class="btn btnData"><?=lang('data_organisasi')?></button>
-        <button class="btn btnData"><?=lang('data_karya')?></button>
-        <button class="btn btnData"><?=lang('data_pendidikan')?></button>
-        <button class="btn btnData"><?=lang('pengalaman_kerja')?></button>
-        <button class="btn btnData"><?=lang('form_lain')?></button>
+        <button class="btn btnData active"><?php echo lang('data_diri')?></button>
+        <button class="btn btnData"><?php echo lang('data_keluarga')?></button>
+        <button class="btn btnData"><?php echo lang('data_pendidikan')?></button>
+        <button class="btn btnData"><?php echo lang('data_pelatihan')?></button>
+        <button class="btn btnData"><?php echo lang('data_bahasa')?></button>
+        <button class="btn btnData"><?php echo lang('data_organisasi')?></button>
+        <button class="btn btnData"><?php echo lang('data_karya')?></button>
+        <button class="btn btnData"><?php echo lang('data_pendidikan')?></button>
+        <button class="btn btnData"><?php echo lang('pengalaman_kerja')?></button>
+        <button class="btn btnData"><?php echo lang('form_lain')?></button>
     </div>-->
     
     <?php echo $pesan!=""?"<div style='text-align:center;color:blue;border:1px solid #ddd;padding: 20px 10px;margin:20px;'>".$pesan."</div>":"";?>
@@ -37,8 +37,8 @@
                     <div id="upload" style="color: red;padding-left: 2px;"></div>
                 </div>                                    
                 <div class="modal-footer">
-                    <input type="submit" class="btn btn-info btn-small" name="upload_foto" id="upload_foto" value="<?=lang('unggah')?>" onclick="fileUpload(this.form,'<?php echo base_url(); ?>applicant/foto','upload'); return false;"/>
-                    <a href="#" class="btn btn-small" data-dismiss="modal"><?=lang('batal')?></a>
+                    <input type="submit" class="btn btn-info btn-small" name="upload_foto" id="upload_foto" value="<?php echo lang('unggah')?>" onclick="fileUpload(this.form,'<?php echo base_url(); ?>applicant/foto','upload'); return false;"/>
+                    <a href="#" class="btn btn-small" data-dismiss="modal"><?php echo lang('batal')?></a>
                 </div>
             </div>
         </form>    
@@ -53,22 +53,22 @@
                     if ($bool_upload)        
                     {
                 ?>                        
-                <a data-toggle="modal" href="#dialog-foto" class="btn btn-inverse" id="upload" style="margin: 10px 0;"><?=lang('unggah')?> <?=lang('foto')?></a>
+                <a data-toggle="modal" href="#dialog-foto" class="btn btn-inverse" id="upload" style="margin: 10px 0;"><?php echo lang('unggah')?> <?php echo lang('foto')?></a>
                 <?php
                     }
                 ?>                        
             </div>
             <ul class="nav nav-tabs nav-stacked" id="tabForm">
-                <li class="active"><a href="#data_diri"><?=lang('data_diri')?></a></li>
-                <li><a href="#data_keluarga"><?=lang('data_keluarga')?></a></li>
-                <li><a href="#data_pendidikan"><?=lang('data_pendidikan')?></a></li>
-                <li><a href="#data_pelatihan"><?=lang('data_pelatihan')?></a></li>
-                <li><a href="#data_bahasa"><?=lang('data_bahasa')?></a></li>
-                <li><a href="#data_organisasi"><?=lang('data_organisasi')?></a></li>
-                <li><a href="#data_karya"><?=lang('data_karya')?></a></li>
-                <li><a href="#data_prestasi"><?=lang('data_prestasi')?></a></li>
-                <li><a href="#data_pengalaman"><?=lang('pengalaman_kerja')?></a></li>
-                <li><a href="#data_lain"><?=lang('form_lain')?></a></li>
+                <li class="active"><a href="#data_diri"><?php echo lang('data_diri')?></a></li>
+                <li><a href="#data_keluarga"><?php echo lang('data_keluarga')?></a></li>
+                <li><a href="#data_pendidikan"><?php echo lang('data_pendidikan')?></a></li>
+                <li><a href="#data_pelatihan"><?php echo lang('data_pelatihan')?></a></li>
+                <li><a href="#data_bahasa"><?php echo lang('data_bahasa')?></a></li>
+                <li><a href="#data_organisasi"><?php echo lang('data_organisasi')?></a></li>
+                <li><a href="#data_karya"><?php echo lang('data_karya')?></a></li>
+                <li><a href="#data_prestasi"><?php echo lang('data_prestasi')?></a></li>
+                <li><a href="#data_pengalaman"><?php echo lang('pengalaman_kerja')?></a></li>
+                <li><a href="#data_lain"><?php echo lang('form_lain')?></a></li>
             </ul>
         </div>
         <div class="span10">

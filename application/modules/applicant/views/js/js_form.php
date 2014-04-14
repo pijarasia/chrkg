@@ -1,9 +1,8 @@
-<?php 
-
-?>
     $(document).ready(function() {
         $('#jur').hide(); 
-       
+        load_education();
+       load_work();
+       load_course();
         $.each($(".my-nav"), function(){
             var nav = '<?php echo $navigation?>';
             $("#" + this.id).removeClass('active');
@@ -36,7 +35,9 @@
                                 
                 
                 //pendidikan
-                jenjang: { required: true },
+
+              
+  /*              jenjang: { required: true },
     		    institusi: { required: true},
     		    jurusan: { required: true},
     		    kota: { required: true },
@@ -45,7 +46,7 @@
     		    tahunLulus: { required: true, greaterThan: "#tahunMasuk" }, 
     		    no_ijazah: { required: true },                
     		    nilai: { required: true },
-
+*/
                 pelatihan: { required: true },
     		    penyelenggara: { required: true},
     		    kota_penyelenggara: { required: true},
@@ -234,11 +235,11 @@
                         ?>
                             $('#dialog-notif').modal('show');                        
                             //window.location = "<?php echo base_url(); ?>vacancy";
-                        <?
+                        <?php
                             } else {
                         ?>
                             window.location = "<?php echo base_url(); ?>vacancy/details/<?php echo $this->session->userdata('vacancy')?>";
-                        <?
+                        <?php
                             }
                         ?>
                     }
@@ -255,6 +256,106 @@
                 $('#jur').show();   
             }        
         });       
+
+
+
+
+        /************
+        * Pendidikan
+        ************/
+        $("#simpan_pendidikan").click(function() {
+            courseStartDate();
+            courseStartEnd();
+                        
+            var $valid = $("#form_data").valid();
+            if(!$valid) {
+                $validator.focusInvalid();
+                return false;
+            } else {
+
+                if ($("#letakd").is(':checked'))
+                        var letak = "D";
+                    else if ($("#letakb").is(':checked'))
+                        var letak = "B";                                    
+                    var form_data = {
+                        nama: $('#nama').val(),
+                        email: $('#email').val(),              
+                        jenjang: $('#jenjang').val(),
+                        institusi: $('#institusi').val(),
+                        jurusan: $('#jurusan').val(),
+                        kota: $('#kota').val(),
+                        negara: $('#negara').val(),
+                        tahunMasuk: $('#tahunMasuk').val(),
+                        tahunLulus: $('#tahunLulus').val(),              
+                        nilai: $('#nilai').val(),                
+                        no_ijazah: $('#no_ijazah').val(),                
+                        lulus: $('#lulus').val(),                
+                        gelar: $('#gelar').val(),                
+                        letak: letak,  
+                        last: true,
+                        ajax:1
+                    };
+                    $.ajax({
+                        url : "<?php echo base_url(); ?>applicant/add_education",
+                        type : 'POST',
+                        data : form_data,
+                        success: function(msg){
+                        if (msg == true)
+                        {
+                            $('#success_education').html("Data berhasil disimpan.");                                
+                                $('#success_education').show();
+                                $('#hiddenIDPelatihan').val("");
+                                $('#pelatihan').val("");
+                                $('#penyelenggara').val("")
+                                $('#kota_penyelenggara').val("");   
+                                $('#tanggalPelatihanAwal').val("");
+                                $('#bulanPelatihanAwal').val("");
+                                $('#tahunPelatihanAwal').val("");
+                                $('#tanggalPelatihanAkhir').val("");
+                                $('#bulanPelatihanAkhir').val("");
+                                $('#tahunPelatihanAkhir').val("");                        
+                            } else {
+                                $('#error_education').html("Data gagal disimpan.");                
+                                $('#error_education').show();
+                            }
+                            $('#dialog-pendidikan').modal('hide');
+                        }
+                    });           
+                    load_education(); 
+
+
+
+
+            }       
+            return false;
+        });  
+
+
+        $("#hapus_education").click(function() { 
+            var form_data = {
+                id: $('#hidden_del_education').val(),
+                ajax:1
+            }
+            $.ajax({
+                url : "<?php echo base_url(); ?>applicant/delete_education",
+                type : 'POST',
+                data : form_data,
+                success: function(msg){
+                    if (msg == 1)
+                    {
+                        $('#success_education').html("Data berhasil dihapus.");
+                        $('#success_education').show();
+                    } else {
+                        $('#error_education').html("Data gagal dihapus.");                
+                        $('#error_education').hide();
+                    }
+                    $('#dialog-delete-education').modal('hide');
+                    load_education();
+                }                
+            });
+            return false;
+        });    
+
     
         /************
         * Pelatihan
@@ -359,7 +460,9 @@
         /******************
         * Pengalaman Kerja
         ******************/
+
         $("#simpan_pengalaman").click(function() {
+         
             var $valid = $("#form_data").valid();
             if(!$valid) {
                 $validator.focusInvalid();
@@ -455,6 +558,7 @@
                  }
       		}       
             return false;
+            
         });   
         
         $("#hapus_pengalaman").click(function() { 
@@ -481,6 +585,100 @@
             });
             return false;
         });      
+
+
+
+        /******************
+        *  Gaji
+        ******************/
+
+        $("#simpan_gaji").click(function() {
+                        
+            var $valid = $("#form_data").valid();
+            if(!$valid) {
+                $validator.focusInvalid();
+                return false;
+            } else {
+                    var form_data = {
+                    nama: $('#nama').val(),
+                    email: $('#email').val(),                                              
+                    gaji: $('#gaji').val(),
+                    ajax:1
+                };
+                $.ajax({
+                    url : "<?php echo base_url(); ?>applicant/addother_data",
+                    type : 'POST',
+                    data : form_data,
+                    success: function(msg){
+                        if (msg == true)
+                        {                            
+                            $('#success_gaji').show();
+                        } else {            
+                            $('#error_work').show();
+                        }
+                        $('#dialog-gaji').modal('hide');
+                    }
+                });                                                           
+            }       
+            return false;
+        });  
+
+
+        /*******************
+        *   Data Diri
+        *******************/
+
+        $("#simpan_diri").click(function(){            
+            var $valid = $("#form_data").valid();
+            if(!$valid) {
+                $validator.focusInvalid();
+                return false;
+            } else {
+                    if ($("#jkl").is(':checked'))
+                        var jk = "L";
+                    else if ($("#jkp").is(':checked'))
+                        var jk = "P";
+                    
+                    var form_data = {
+                        nama: $('#nama').val(),
+                        jk: jk,
+                        tmptlahir: $('#tmptlahir').val(),
+                        tanggal: $('#tanggal').val(),
+                        bulan: $('#bulan').val(),
+                        tahun: $('#tahun').val(),
+                        no_identitas: $('#no_identitas').val(),
+                        tanggalberlaku: $('#tanggalberlaku').val(),
+                        bulanberlaku: $('#bulanberlaku').val(),
+                        tahunberlaku: $('#tahunberlaku').val(),
+                        statusMarital: $('#statusMarital').val(),
+                        agama: $('#agama').val(),
+                        email: $('#email').val(),              
+                        alternatif_email: $('#alternatif_email').val(),              
+                        nohp: $('#nohp').val(),
+                        alternatif_nohp: $('#alternatif_nohp').val(),
+                        ajax:1
+                    };
+                   // console.log(form_data);
+                    $.ajax({
+                        url : "<?php echo base_url(); ?>applicant/addfirst_personal",
+                        type : 'POST',
+                        data : form_data,
+                        async : false,                        
+                        success: function(msg){
+                            if (msg == true)
+                            {                            
+                                $('#success_diri').show();
+                            } else {            
+                                $('#error_diri').show();
+                            }
+                            $('#dialog-diri').modal('hide');
+                        }
+                    });                
+                }
+
+            return false; 
+            });
+
         
         $(".close").click(function() { 
             $('#success_course').hide();
@@ -569,6 +767,7 @@
     {
         $('#hidden_del_pelatihan').val(id);
         $('#body-delete-course').html("Hapus data pelatihan "+pelatihan+"?");
+        $('#dialog-delete-course').modal('show');
     }
     
     function load_course()
@@ -658,8 +857,48 @@
     function workExDelete(id, perusahaan)
     {
         $('#hidden_del_pengalaman').val(id);
-        $('#body-delete-work').html("Hapus data pengalaman kerja di "+perusahaan+"?");
+        $('#body-delete-work').html("Hapus data pengalaman kerja di "+perusahaan+"?");        
+        $('#dialog-delete-work').modal('show');
     }  
+
+
+    function load_education()
+    {
+        var form_data = {
+            email: $('#email').val(),   
+            no_identitas: $('#no_identitas').val(),               
+            ajax:1
+        }
+        $.ajax({
+            url : "<?php echo base_url(); ?>applicant/load_education",
+            type : 'POST',
+            data : form_data,
+            success: function(msg){
+                $('#educationList').html(msg);
+
+                var form_data = {
+                    ajax:1
+                }
+                $.ajax({
+                    url : "<?php echo base_url(); ?>applicant/load_add_work",
+                    type : 'POST',
+                    data : form_data,
+                    success: function(msg){
+                        $('#loadButtonWork').html(msg);
+                    }
+                });
+
+            }
+        });
+        return false;           
+    }    
+
+    function educationDelete(id, education)
+    {
+        $('#hidden_del_education').val(id);
+        $('#body-delete-education').html("Hapus data pendidikan "+education+"?");
+        $('#dialog-delete-education').modal('show');            
+    } 
     
     jQuery.validator.addMethod("greaterThan", 
         function(value, element, params) {
@@ -678,3 +917,278 @@
     {
         $("#pelatihanAkhir").val(new Date($("#tahunPelatihanAkhir").val()+"-"+$("#bulanPelatihanAkhir").val()+"-"+$("#tanggalPelatihanAkhir").val()));
     }            
+
+    function edit_work(id)
+    {
+
+        var perusahaan = $('#perusahaan'+id).val();
+        var alamat_perusahaan = $('#alamat_perusahaan'+id).val();
+        var kota_perusahaan = $('#kota_perusahaan'+id).val();
+        var telp_perusahaan = $('#telp_perusahaan'+id).val();
+        var atasan = $('#atasan'+id).val();
+        var posisi = $('#posisi'+id).val();
+        var bulanKerjaAwal = ($('#bulanKerjaAwal'+id).val() < 10 ? "0"+$('#bulanKerjaAwal'+id).val() : $('#bulanKerjaAwal'+id).val());
+        var tahunKerjaAwal = $('#tahunKerjaAwal'+id).val();
+        var bulanKerjaAkhir = ($('#bulanKerjaAkhir'+id).val() < 10 ? "0"+$('#bulanKerjaAkhir'+id).val() : $('#bulanKerjaAkhir'+id).val());
+        var tahunKerjaAkhir = $('#tahunKerjaAkhir'+id).val();
+        var masih_bekerja = $('#masih_bekerja'+id).val();
+        var gaji_awal = $('#gaji_awal'+id).val();
+        var gaji_akhir = $('#gaji_akhir'+id).val();
+        var deskripsi = $('#deskripsi'+id).val();
+        var alasan_keluar = $('#alasan_keluar'+id).val();
+        var hiddenIDPengalaman = $('#hiddenIDPengalaman'+id).val();
+            
+                var tanggal = "OK";
+                
+                if ($('#bulanKerjaAkhir').val() < $('#bulanKerjaAwal').val() && $("#tahunKerjaAkhir").val() == $("#tahunKerjaAkhir").val())
+                {
+                    tanggal = "NO";
+                    if ($('#bulanKerjaAkhir').val() == "")
+                        $('#bulanKerjaAkhir').focus();
+                    else
+                        $('#tahunKerjaAkhir').focus();
+                }
+                else if ($("#tahunKerjaAkhir").val() < $("#tahunKerjaAwal").val()) /* && $('#masih_bekerja').is(':checked') == false)*/
+                {
+                    tanggal = "NO";
+                    $('#tahunKerjaAkhir').focus();
+                } 
+                else if ($("#tahunKerjaAkhir").val() == $("#tahunKerjaAwal").val() && $('#masih_bekerja').is(':checked') == false)
+                {
+                    tanggal = "NO";
+
+                    if ($('#bulanKerjaAkhir').val() < $('#bulanKerjaAwal').val()) {
+                        $('#bulanKerjaAkhir').focus();
+                    } else 
+                        tanggal = "OK";
+                } 
+                
+                if (tanggal == "OK"){               
+                    if ($('#masih_bekerja').is(':checked'))
+                        var masih_bekerja = true;
+                    else
+                        var masih_bekerja = false;              
+                    
+                    var form_data = {
+                        id: id,
+                        nama: $('#nama').val(),
+                        email: $('#email').val(),                          
+                        perusahaan: perusahaan,
+                        alamat_perusahaan: alamat_perusahaan,
+                        kota_perusahaan: kota_perusahaan,
+                        telp_perusahaan: telp_perusahaan,
+                        atasan: atasan,
+                        posisi: posisi,
+                        bulanKerjaAwal: bulanKerjaAwal,
+                        tahunKerjaAwal: tahunKerjaAwal,
+                        bulanKerjaAkhir: bulanKerjaAkhir,
+                        tahunKerjaAkhir: tahunKerjaAkhir,        
+        
+                        gaji_awal: gaji_awal,
+                        gaji_akhir: gaji_akhir,
+                        deskripsi: deskripsi,
+                        alasan_keluar: alasan_keluar,
+                        masih_bekerja: masih_bekerja,        
+        
+                        ajax:1
+                    };
+                    $.ajax({
+                        url : "<?php echo base_url(); ?>applicant/edit_work_experience",
+                        type : 'POST',
+                        data : form_data,
+                        success: function(msg){
+                            if (msg == 1)
+                            {
+                                $('#success_work').html("Data berhasil disimpan.");                                                                
+                                $('#success_work').show();
+                                $('#hiddenIDPengalaman').val("");
+                                $('#perusahaan').val("");
+                                $('#alamat_perusahaan').val("");
+                                $('#kota_perusahaan').val("");
+                                $('#telp_perusahaan').val("");
+                                $('#atasan').val("");
+                                $('#posisi').val("");
+                                $('#bulanKerjaAwal').val("");
+                                $('#tahunKerjaAwal').val("");
+                                $('#bulanKerjaAkhir').val("");
+                                $('#tahunKerjaAkhir').val("");      
+                                $('#gaji_awal').val("");
+                                $('#gaji_akhir').val("");
+                                $('#deskripsi').val("");
+                                $('#alasan_keluar').val("");
+                                $('#masih_bekerja').prop("checked", false);
+                            } else {
+                                $('#error_work').html("Data gagal disimpan.");
+                                $('#error_work').show();
+                            }
+                            $('#pengalaman_kerja_edit'+id).modal('hide');
+                            load_work();
+                        }
+                    });
+                 }            
+
+    }             
+
+    function edit_education(id)
+    {
+
+        var jenjang = $('#jenjang'+id).val();
+        var institusi = $('#institusi'+id).val();
+        var jurusan = $('#jurusan'+id).val();
+        var kota = $('#kota'+id).val();
+        var negara = $('#negara'+id).val();
+        var tahunMasuk = $('#tahunMasuk'+id).val();
+        var tahunLulus = $('#tahunLulus'+id).val();
+        var no_ijazah = $('#no_ijazah'+id).val();
+        var lulus = $('#lulus'+id).val();
+        var gelar = $('#gelar'+id).val();
+
+        if ($("#letakd"+id).is(':checked'))
+            var letak = "D";
+        else if ($("#letakb"+id).is(':checked'))
+            var letak = "B";
+        if ($("#last"+id).is(':checked'))
+            var last = true;
+        else if ($("#last"+id).is(':checked'))
+            var last = false;
+        
+        var nilai = $('#nilai'+id).val();
+        var hiddenIDEducation = $('#hiddenIDEducation'+id).val();           
+
+
+                var form_data = {
+                        nama: $('#nama').val(),
+                        email: $('#email').val(),              
+                        jenjang: jenjang,
+                        institusi: institusi,
+                        jurusan: jurusan,
+                        kota: kota,
+                        negara: negara,
+                        tahunMasuk: tahunMasuk,
+                        tahunLulus: tahunLulus,              
+                        nilai: nilai,                
+                        no_ijazah: no_ijazah,                
+                        lulus: lulus,                
+                        gelar: gelar,                
+                        letak: letak,  
+                        last: last,
+                        id: id,
+                        ajax:1
+                    };
+                    $.ajax({
+                        url : "<?php echo base_url(); ?>applicant/add_education",
+                        type : 'POST',
+                        data : form_data,
+                        success: function(msg){
+                            if (msg)
+                            {
+                                $('#success_education').html("Data berhasil disimpan.");                                                                
+                                $('#success_education').show();
+                                $('#hiddenIDPengalaman').val("");
+                                $('#perusahaan').val("");
+                                $('#alamat_perusahaan').val("");
+                                $('#kota_perusahaan').val("");
+                                $('#telp_perusahaan').val("");
+                                $('#atasan').val("");
+                                $('#posisi').val("");
+                                $('#bulanKerjaAwal').val("");
+                                $('#tahunKerjaAwal').val("");
+                                $('#bulanKerjaAkhir').val("");
+                                $('#tahunKerjaAkhir').val("");      
+                                $('#gaji_awal').val("");
+                                $('#gaji_akhir').val("");
+                                $('#deskripsi').val("");
+                                $('#alasan_keluar').val("");
+                                $('#masih_bekerja').prop("checked", false);
+                            } else {
+                                $('#error_education').html("Data gagal disimpan.");
+                                $('#error_education').show();
+                            }
+                            $('#education_edit'+id).modal('hide');
+                            load_education();
+                        }
+                    }); 
+
+                
+    }             
+
+    function edit_course(id)
+    {
+        var pelatihan = $('#pelatihan'+id).val();
+        var penyelenggara = $('#penyelenggara'+id).val();
+        var kota_penyelenggara = $('#kota_penyelenggara'+id).val();
+        var sertifikat = $('#sertifikat'+id).val();
+        var bulan1 = ($('#bulanPelatihanAwal'+id).val() < 10 ? "0"+$('#bulanPelatihanAwal'+id).val() : $('#bulanPelatihanAwal'+id).val());
+        var tgl1 = ($('#tanggalPelatihanAwal'+id).val() < 10 ? "0"+$('#tanggalPelatihanAwal'+id).val() : $('#tanggalPelatihanAwal'+id).val());
+        var aplCourseStart = $('#tahunPelatihanAwal'+id).val()+"-"+bulan1+"-"+tgl1;
+        var bulan2 = ($('#bulanPelatihanAkhir'+id).val() < 10 ? "0"+$('#bulanPelatihanAkhir'+id).val() : $('#bulanPelatihanAkhir'+id).val());
+        var tgl2 = ($('#tanggalPelatihanAkhir'+id).val() < 10 ? "0"+$('#tanggalPelatihanAkhir'+id).val() : $('#tanggalPelatihanAkhir'+id).val());
+        var aplCourseEnd = $('#tahunPelatihanAkhir'+id).val()+"-"+bulan2+"-"+tgl2;
+        
+        var hiddenIDCourse = $('#hiddenIDCourse'+id).val();
+
+
+           /* var $valid = $("#course_edit"+id).valid();
+            if(!$valid) {
+                $validator.focusInvalid();
+                alert('gagal');
+                return false;
+            } else {*/
+                var tanggal = "OK";
+                
+                if (aplCourseStart > aplCourseEnd)
+                {
+                    tanggal = "NO";
+                    $('#tanggalPelatihanAwal').focus();
+                } 
+                
+                if (tanggal == "OK"){                         
+                    
+                    var form_data = {
+                        id: id,
+                        name: pelatihan,
+                        penyelenggara: penyelenggara,                          
+                        kota: kota_penyelenggara,
+                        sertifikat: sertifikat,
+                        start: aplCourseStart,
+                        end: aplCourseEnd,
+                        ajax:1
+                    };
+                    $.ajax({
+                        url : "<?php echo base_url(); ?>applicant/edit_course",
+                        type : 'POST',
+                        data : form_data,
+                        success: function(msg){
+                            if (msg == 1)
+                            {
+                                $('#success_work').html("Data berhasil disimpan.");                                                                
+                                $('#success_work').show();
+                                $('#hiddenIDPengalaman').val("");
+                                $('#perusahaan').val("");
+                                $('#alamat_perusahaan').val("");
+                                $('#kota_perusahaan').val("");
+                                $('#telp_perusahaan').val("");
+                                $('#atasan').val("");
+                                $('#posisi').val("");
+                                $('#bulanKerjaAwal').val("");
+                                $('#tahunKerjaAwal').val("");
+                                $('#bulanKerjaAkhir').val("");
+                                $('#tahunKerjaAkhir').val("");      
+                                $('#gaji_awal').val("");
+                                $('#gaji_akhir').val("");
+                                $('#deskripsi').val("");
+                                $('#alasan_keluar').val("");
+                                $('#masih_bekerja').prop("checked", false);
+                            } else {
+                                $('#error_work').html("Data gagal disimpan.");
+                                $('#error_work').show();
+                            }
+                            $('#course_edit'+id).modal('hide');
+                            load_work();
+                        }
+                    });
+                 }
+            //}       
+            //return false;
+            
+    } 

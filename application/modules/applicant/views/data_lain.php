@@ -1,6 +1,6 @@
 <html>
 <body>
-    <!--<h2><?=lang('form_lain')?></h2>-->
+    <!--<h2><?php echo lang('form_lain')?></h2>-->
     <form name="form_datalain" id="form_datalain" method="get" style="padding: 15px;">
         <div class="alert alert-success hide" id="success_other">
             Data berhasil dimasukan.
@@ -9,7 +9,7 @@
             Data gagal dimasukan, silakan coba lagi.
         </div>
         <div class="control-group">
-            <label class="control-label" for="gaji"><?=lang('gaji_harapan')?> <?= $bool_add==false?" : ".trim($aplExpectedSalary):"-"; ?></label>
+            <label class="control-label" for="gaji"><?php echo lang('gaji_harapan')?> <?php echo  $bool_add==false?" : ".trim($aplExpectedSalary):"-"; ?></label>
             <?php
                 if ($bool_add)
                 {
@@ -32,7 +32,7 @@
             <div class="span6">
                 <div class="control-group">
                     <input type="hidden" name="hiddenIDLain" id="hiddenIDLain" />
-                    <input type="submit" class="btn btn-info" name="simpan_lain" id="simpan_lain" value="<?=lang('simpan')?>" />
+                    <input type="submit" class="btn btn-info" name="simpan_lain" id="simpan_lain" value="<?php echo lang('simpan')?>" />
                 </div>
             </div>
         </div>

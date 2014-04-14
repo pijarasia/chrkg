@@ -85,7 +85,7 @@ class Applicant_Model extends CI_Model
     * 3. If applicant doesnt exist, data will be entered to tbmApplicant.
     * 4. If applicant exist, data will be updated to tbmApplicant. 
     */    
-    function addfirst_personal($fname, $lname, $sex, $placeb, $dateb, $identity_number, $valid_until, $marital, $religion, $email, $alternate_email, $cellular, $alternate_cellular)
+    function addfirst_personal($userID,$fname, $lname, $sex, $placeb, $dateb, $identity_number, $valid_until, $marital, $religion, $email, $alternate_email, $cellular, $alternate_cellular)
     {
         if ($fname != "" && $sex != "" && $placeb != "" && $dateb != "" && $identity_number != "" && $valid_until != "" && $marital != ""  && $religion != "" && $email != "" && $cellular != "")
         {
@@ -97,10 +97,11 @@ class Applicant_Model extends CI_Model
             $this->db->set('AppUserListLastName', $lname);
             $this->db->set('AppUserListEmail', $email);
             $this->db->set('AppUserListPhone', $cellular);                 
-            $this->db->where('AppUserListID', $row->aplPersonID);
+            $this->db->where('AppUserListID', $userID);
             $add = $this->db->update('tbaAppUserList'); //2
 
             //update to tbmApplicant
+            $this->db->set('aplPersonID',$userID);
             $this->db->set('aplSex', $sex);
             $this->db->set('aplPlaceOfBirth', $placeb);
             $this->db->set('aplDateOfBirth', $dateb);
@@ -114,7 +115,7 @@ class Applicant_Model extends CI_Model
             if ($result->num_rows() == 0) //3
             {
                 $this->db->set('aplDateRegister', date('Y-m-d H:i:s'));                 
-                $add = $this->db->insert('tbmApplicant');     
+                $add2 = $this->db->insert('tbmApplicant');     
             }
             else //4
             {
@@ -352,7 +353,16 @@ class Applicant_Model extends CI_Model
 *
 * Course Data
 *
-******************************/       
+******************************/  
+
+    public function list_course($personID)
+    {
+        $this->db->select("*");
+        $this->db->where('aplPersonID', $personID);
+        $result = $this->db->get('tbmAplCourse');        
+        $row = $result->row();
+        return $row;
+    }        
     /*
     * View course
     */    
@@ -483,6 +493,15 @@ class Applicant_Model extends CI_Model
 * Work Experience Data
 *
 ******************************/           
+
+    public function list_work($personID)
+    {
+        $this->db->select("*");
+        $this->db->where('aplPersonID', $personID);
+        $result = $this->db->get('tbmAplWorkExperience');        
+        $row = $result->row();
+        return $row;
+    }  
     /*
     * Check work
     */      

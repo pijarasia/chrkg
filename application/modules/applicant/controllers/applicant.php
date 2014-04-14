@@ -24,28 +24,28 @@ class Applicant extends Admin_Controller{
         
         $this->lang->load('form',$lang);     
         
-		$this->load->vars(array(
-			'title' => 'Candidates',
-			'navigation' => 'nav-candidates'
-		));                                       
+        $this->load->vars(array(
+            'title' => 'Candidates',
+            'navigation' => 'nav-candidates'
+        ));                                       
     }
     
 /**
 * Load View Form
 */        
-	public function form()
-	{
-		if (!$this->auth->logged_in() || $this->auth->is_admin())
-		{
-			redirect($this->config->item('base_url'), 'refresh');
-		}
-		else
-		{
+    public function form()
+    {
+        if (!$this->auth->logged_in() || $this->auth->is_admin())
+        {
+            redirect($this->config->item('base_url'), 'refresh');
+        }
+        else
+        {
             $cek_step = $this->vacancy->cek_process_apply_stepcv($this->session->userdata('email'))->num_rows();
             if ($cek_step > 0)
                 Template::redirect('applicant/data');
             else
-            {		  
+            {         
                 $data["language"] = $this->session->userdata('language'); 
                      
                 $this->load->vars(array('title' => lang("lamaran")));
@@ -65,7 +65,8 @@ class Applicant extends Admin_Controller{
     
                 //if (count($getPerson) > 0)
                 //{
-                if ($getPerson->AppUserLevelLevelID == 10 || $getPerson->AppUserLevelLevelID == 11) //level for internal/external candidates
+                //if ($getPerson->AppUserLevelLevelID == 10 || $getPerson->AppUserLevelLevelID == 11) //level for internal/external candidates
+                if ($this->session->userdata('xyz') == 10 || $this->session->userdata('xyz') == 11) 
                 {
                     /*Tab 1*/
                     $data["aplName"] = $getPerson->AppUserListFirstName." ".$getPerson->AppUserListLastName;
@@ -207,9 +208,214 @@ class Applicant extends Admin_Controller{
                 Template::set($data);
                 Template::render();
             }
-        }	           
-	}       
+        }              
+    }       
     
+
+    /**
+* Load View Form
+*/        
+    public function profile()
+    {
+        if (!$this->auth->logged_in() || $this->auth->is_admin())
+        {
+            redirect($this->config->item('base_url'), 'refresh');
+        }
+        else
+        {
+            $cek_step = $this->vacancy->cek_process_apply_stepcv($this->session->userdata('email'))->num_rows();
+            if ($cek_step > 0)
+                Template::redirect('applicant/data');
+            else
+            {         
+                $data["language"] = $this->session->userdata('language'); 
+                     
+                $this->load->vars(array('title' => lang("lamaran")));
+                
+                $data["agama"] = $this->reference->referensi_agama();
+                $data["golDarah"] = $this->reference->referensi_golDarah();
+                $data["marital"] = $this->reference->referensi_marital();
+                $data["bulan"] = $this->reference->referensi_bulan();   
+                $data["tanda_pengenal"] = $this->reference->referensi_tanda_pengenal();   
+                $data["pendidikan"] = $this->reference->referensi_jenjang_pendidikan(); 
+                $data["negara"] = $this->reference->referensi_negara();   
+                $getPerson = $this->applicant->get_person($this->session->userdata('email'))->row();
+    
+                if ($this->session->userdata('xyz') == 10 || $this->session->userdata('xyz') == 11) 
+                {
+                    /*Tab 1*/
+                    $data["aplName"] = $getPerson->AppUserListFirstName." ".$getPerson->AppUserListLastName;
+                    $data["Age"] = $getPerson->Age;
+                    $data["aplSex"] = $getPerson->aplSex;
+                    $data["aplPlaceOfBirth"] = $getPerson->aplPlaceOfBirth;
+                    $data["aplDateOfBirth"] = $getPerson->aplDateOfBirth;
+                    $data["aplIdentityNumber"] = $getPerson->aplIdentityNumber;
+                    $data["aplIdentityValid"] = $getPerson->aplIdentityValid;
+                    $data["aplMaritalStatus"] = $getPerson->aplMaritalStatus;
+                    $data["aplReligion"] = $getPerson->aplReligion;
+                    $data["aplEmail"] = $getPerson->AppUserListEmail;
+                    $data["aplAlternateEmail"] = $getPerson->aplAlternateEmail;
+                    $data["aplCellular"] = $getPerson->AppUserListPhone;
+                    $data["aplAlternateCellular"] = $getPerson->aplAlternateCellular;
+        
+                    //Tab 5
+                    $data["aplExpectedSalary"] = $getPerson->aplExpectedSalary;
+                    /*End Tab 1*/
+                    
+                    /*Tab 2*/
+                    $getLastEducation = $this->applicant->check_last_education($getPerson->aplPersonID);     
+                    if (count($getLastEducation) > 0)
+                    {        
+                        $data["aplEducationLevel"] = $getLastEducation->aplEducationLevel;
+                        $data["aplEducationInstitution"] = $getLastEducation->aplEducationInstitution;
+                        $data["aplEducationMajor"] = $getLastEducation->aplEducationMajor;
+                        $data["aplEducationCity"] = $getLastEducation->aplEducationCity;
+                        $data["aplEducationCountry"] = $getLastEducation->aplEducationCountry;
+                        $data["aplEducationYearStart"] = $getLastEducation->aplEducationYearStart;
+                        $data["aplEducationYearEnd"] = $getLastEducation->aplEducationYearEnd;
+                        $data["aplEducationGPA"] = $getLastEducation->aplEducationGPA;
+                        $data["aplEducationCert"] = $getLastEducation->aplEducationCert;
+                        $data["aplEducationDegree"] = $getLastEducation->aplEducationDegree;
+                        $data["aplEducationDegreePos"] = $getLastEducation->aplEducationDegreePos;
+                        $data["aplEducationGraduate"] = $getLastEducation->aplEducationGraduate;
+                    } else {
+                        $data["aplEducationLevel"] = "";
+                        $data["aplEducationInstitution"] = "";
+                        $data["aplEducationMajor"] = "";
+                        $data["aplEducationCity"] = "";
+                        $data["aplEducationCountry"] = "";
+                        $data["aplEducationYearStart"] = "";
+                        $data["aplEducationYearEnd"] = "";
+                        $data["aplEducationGPA"] = "";
+                        $data["aplEducationCert"] = "";                   
+                        $data["aplEducationDegree"] = "";
+                        $data["aplEducationDegreePos"] = "";
+                        $data["aplEducationGraduate"] = "";                            
+                    }
+                    /*End Tab 2*/
+                    
+                    /*Tab 3*/
+                    $getLastCourse = $this->applicant->list_course($getPerson->aplPersonID); 
+                   // var_dump($getLastCourse);exit();
+                    if (count($getLastCourse) > 0){
+                        $data["aplCourseName"] = $getLastCourse->aplCourseName ;
+                        $data["aplCourseStart"] = $getLastCourse->aplCourseStart ;
+                        $data["aplCourseEnd"] = $getLastCourse->aplCourseEnd ;
+                        $data["aplCourseOrganizer"] = $getLastCourse->aplCourseOrganizer ;
+                        $data["aplCourseCity"] = $getLastCourse->aplCourseCity ;            
+                        $data["aplCourseNoCertificate"] = $getLastCourse->aplCourseNoCertificate ;  
+                    }
+                    else{
+                        $data["aplCourseName"] = "";
+                        $data["aplCourseStart"] = "";
+                        $data["aplCourseEnd"] = "";
+                        $data["aplCourseOrganizer"] = "";
+                        $data["aplCourseCity"] = "";            
+                        $data["aplCourseNoCertificate"] = ""; 
+                    }
+                   // $data["allCourse"] = $this->applicant->view_course($getPerson->aplPersonID);
+                    $getLastWork = $this->applicant->list_work($getPerson->aplPersonID);
+                    //var_dump($getLastWork);exit();
+                    if (count($getLastWork) > 0) {
+                        $data["aplWorkExCompany"] = $getLastWork->aplWorkExCompany;
+                        $data["aplWorkExAddress"] = $getLastWork->aplWorkExAddress;
+                        $data["aplWorkExCity"] = $getLastWork->aplWorkExCity;
+                        $data["aplWorkPhoneNumber"] = $getLastWork->aplWorkPhoneNumber;
+                        $data["aplWorkExLastSpv"] = $getLastWork->aplWorkExLastSpv;
+                        $data["aplWorkExPosition"] = $getLastWork->aplWorkExPosition;
+                        $data["aplWorkExStart"] = $getLastWork->aplWorkExStart;
+                        $data["aplWorkExEnd"] = $getLastWork->aplWorkExEnd;
+                        $data["aplWorkExStartSalary"] = $getLastWork->aplWorkExStartSalary;
+                        $data["aplWorkExEndSalary"] = $getLastWork->aplWorkExEndSalary;
+                        $data["aplWorkExDescription"] = $getLastWork->aplWorkExDescription;
+                        $data["aplWorkExReasonLeave"] = $getLastWork->aplWorkExReasonLeave;
+                    }
+                    else{
+                        $data["aplWorkExCompany"] = "";
+                        $data["aplWorkExAddress"] = "";
+                        $data["aplWorkExCity"] = "";
+                        $data["aplWorkPhoneNumber"] = "";
+                        $data["aplWorkExLastSpv"] = "";            
+                        $data["aplWorkExPosition"] = "";             
+                        $data["aplWorkExStart"] = "";
+                        $data["aplWorkExEnd"] = "";
+                        $data["aplWorkExStartSalary"] = "";
+                        $data["aplWorkExEndSalary"] = "";
+                        $data["aplWorkExDescription"] = "";            
+                        $data["aplWorkExReasonLeave"] = "";               
+                    }
+                    //$data["allWork"] = $this->applicant->view_work($getPerson->aplPersonID);
+                } else {  
+                    $data["pesan"] = lang('login_kandidat');
+    
+                    $data["aplName"] = "";
+                    $data["Age"] = "";            
+                    $data["aplSex"] = "";
+                    $data["aplPlaceOfBirth"] = "";
+                    $data["aplDateOfBirth"] = "";
+                    $data["aplIdentityNumber"] = "";
+                    $data["aplMaritalStatus"] = "";
+                    $data["aplReligion"] = "";
+                    $data["aplEmail"] = "";
+                    $data["aplAlternateEmail"] = "";
+                    $data["aplCellular"] = "";
+                    $data["aplAlternateCellular"] = "";
+                    
+                    $data["aplEducationLevel"] = "";
+                    $data["aplEducationInstitution"] = "";
+                    $data["aplEducationMajor"] = "";
+                    $data["aplEducationCity"] = "";
+                    $data["aplEducationCountry"] = "";
+                    $data["aplEducationYearStart"] = "";
+                    $data["aplEducationYearEnd"] = "";
+                    $data["aplEducationGPA"] = "";
+                    $data["aplEducationCert"] = "";   
+                    $data["aplEducationDegree"] = "";
+                    $data["aplEducationDegreePos"] = "";
+                    $data["aplEducationGraduate"] = "";                            
+                                    
+                    $data["aplCouseName"] = "";
+                    $data["aplCourseStart"] = "";
+                    $data["aplCourseEnd"] = "";
+                    $data["aplCourseOrganizer"] = "";
+                    $data["aplCourseCity"] = "";            
+                    $data["aplCourseNoCertificate"] = "";    
+                    
+                    $data["aplWorkExCompany"] = "";
+                    $data["aplWorkExAddress"] = "";
+                    $data["aplWorkExCity"] = "";
+                    $data["aplWorkPhoneNumber"] = "";
+                    $data["aplWorkExLastSpv"] = "";            
+                    $data["aplWorkExPosition"] = "";             
+                    $data["aplWorkExStart"] = "";
+                    $data["aplWorkExEnd"] = "";
+                    $data["aplWorkExStartSalary"] = "";
+                    $data["aplWorkExEndSalary"] = "";
+                    $data["aplWorkExDescription"] = "";            
+                    $data["aplWorkExReasonLeave"] = "";             
+        
+                    $data["allCourse"] = "";                                   
+        
+                    $data["aplExpectedSalary"] = "";
+                } 
+                
+                Assets::clear_cache();
+                Assets::add_js('jquery.validate.min.js'); 
+                Assets::add_js('jquery.bootstrap.wizard.js'); 
+                Assets::add_js( $this->load->view('js/js_form', null, true),'inline'); 
+                Assets::add_css('custom.css'); 
+                Assets::add_module_css('applicant','custom.css'); 
+                Assets::add_css('custom.dialog.css'); 
+                                
+                Template::set($data);
+                Template::render();
+            }
+        }              
+    }
+
+
+
+
     /*
     * Add Personal Data
     */        
@@ -235,37 +441,38 @@ class Applicant extends Admin_Controller{
             $alternatif_email = $this->input->post('alternatif_email');
             $nohp = $this->input->post('nohp');
             $alternatif_nohp = $this->input->post('alternatif_nohp');
-            
+            $userID = $this->session->userdata('user_id');
             $this->load->model('auth/register_model','',TRUE);        
             $name = $this->register_model->explode_name($nama);
-            echo $this->applicant->addfirst_personal($name[0], $name[1], $jk, $tmptlahir, $tgllahir, $no_identitas, $berlaku, $statusMarital, $agama, $email, $alternatif_email, $nohp, $alternatif_nohp);
+            echo $this->applicant->addfirst_personal($userID,$name[0], $name[1], $jk, $tmptlahir, $tgllahir, $no_identitas, $berlaku, $statusMarital, $agama, $email, $alternatif_email, $nohp, $alternatif_nohp);
         }
     }    
     
 /**
 * Load View data
 */    
-	public function data()
-	{
-	    if (!$this->auth->logged_in())
-		{
-			redirect($this->config->item('base_url'), 'refresh');
-		}
-		else
-		{	  
+    public function data()
+    {
+        if (!$this->auth->logged_in())
+        {
+            redirect($this->config->item('base_url'), 'refresh');
+        }
+        else
+        {     
             //set the flash data error message if there is one
-    		$data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-    	          	
+            $data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+                    
             $this->load->vars(array('title' => lang("lamaran")."<span id='data'> :: Data Diri</span>"));
     
             $data["language"] = $this->session->userdata('language');
     
-        	//$this->auth->_have_permission('FrontEnd.Photo.View');
+            //$this->auth->_have_permission('FrontEnd.Photo.View');
                                         
             //$getPerson = $this->load_person();
             $person = $this->applicant->get_person($this->session->userdata('email'));
             $get_person = $person->row();
-            if ($get_person->AppUserLevelLevelID == 10 || $get_person->AppUserLevelLevelID == 11) //level for internal/external candidates
+            //if ($get_person->AppUserLevelLevelID == 10 || $get_person->AppUserLevelLevelID == 11) //level for internal/external candidates
+            if ($this->session->userdata('xyz') == 10 || $this->session->userdata('xyz') == 11) 
             {                
                 $cek_step = $this->vacancy->cek_process_apply_stepcv($this->session->userdata('email'))->num_rows();
                 if ($cek_step == 0)
@@ -359,7 +566,7 @@ class Applicant extends Admin_Controller{
             Template::set($data);
             Template::render();    
         }        
-	}        
+    }        
     
     public function load_person()
     {
@@ -382,8 +589,8 @@ class Applicant extends Admin_Controller{
             return null;
     }
     
-	public function data_diri()
-	{
+    public function data_diri()
+    {
         $data["language"] = $this->session->userdata('language');      
         
         
@@ -393,8 +600,8 @@ class Applicant extends Admin_Controller{
         $data["bulan"] = $this->reference->referensi_bulan();   
         $data["tanda_pengenal"] = $this->reference->referensi_tanda_pengenal();   
 
-		$this->auth->_have_permission('FrontEnd.PersonalData.View');
-		$data["bool_add"] = $this->auth->_allowed('FrontEnd.PersonalData.Add');
+        $this->auth->_have_permission('FrontEnd.PersonalData.View');
+        $data["bool_add"] = $this->auth->_allowed('FrontEnd.PersonalData.Add');
 
         $getPerson = $this->load_person();
         if (count($getPerson) > 0)
@@ -440,16 +647,16 @@ class Applicant extends Admin_Controller{
         
         Template::set($data);
         Template::render('iframe');
-	}     
+    }     
     
-	public function data_pelatihan()
-	{
+    public function data_pelatihan()
+    {
         $data["language"] = $this->session->userdata('language');      
         
         $data["bulan"] = $this->reference->referensi_bulan();   
                 
-		$this->auth->_have_permission('FrontEnd.Course.View');
-		$data["bool_add"] = $this->auth->_allowed('FrontEnd.Course.Add');
+        $this->auth->_have_permission('FrontEnd.Course.View');
+        $data["bool_add"] = $this->auth->_allowed('FrontEnd.Course.Add');
                 
         Assets::clear_cache();
         Assets::add_js('jquery.validate.min.js'); 
@@ -460,16 +667,16 @@ class Applicant extends Admin_Controller{
         
         Template::set($data);
         Template::render('iframe');
-	}      
+    }      
     
-	public function data_pengalaman()
-	{
+    public function data_pengalaman()
+    {
         $data["language"] = $this->session->userdata('language');      
         
         $data["bulan"] = $this->reference->referensi_bulan();   
 
-		$this->auth->_have_permission('FrontEnd.Work.View');
-		$data["bool_add"] = $this->auth->_allowed('FrontEnd.Work.Add');
+        $this->auth->_have_permission('FrontEnd.Work.View');
+        $data["bool_add"] = $this->auth->_allowed('FrontEnd.Work.Add');
                 
         Assets::clear_cache();
         Assets::add_js('jquery.validate.min.js'); 
@@ -480,17 +687,17 @@ class Applicant extends Admin_Controller{
         
         Template::set($data);
         Template::render('iframe');
-	}      
-	
-	public function data_pendidikan()
-	{
+    }      
+    
+    public function data_pendidikan()
+    {
         $data["language"] = $this->session->userdata('language');      
         
         $data["ref_pendidikan"] = $this->reference->referensi_jenjang_pendidikan(); 
         $data["negara"] = $this->reference->referensi_negara();
 
-		$this->auth->_have_permission('FrontEnd.Education.View');
-		$data["bool_add"] = $this->auth->_allowed('FrontEnd.Education.Add');
+        $this->auth->_have_permission('FrontEnd.Education.View');
+        $data["bool_add"] = $this->auth->_allowed('FrontEnd.Education.Add');
         
         Assets::clear_cache();
         Assets::add_js('jquery.validate.min.js'); 
@@ -501,17 +708,17 @@ class Applicant extends Admin_Controller{
         
         Template::set($data);
         Template::render('iframe');
-	}      	
+    }       
     
-	public function data_keluarga()
-	{
+    public function data_keluarga()
+    {
         $data["language"] = $this->session->userdata('language');      
         
         $data["ref_pendidikan"] = $this->reference->referensi_jenjang_pendidikan(); 
         $data["bulan"] = $this->reference->referensi_bulan();   
         
-		$this->auth->_have_permission('FrontEnd.Family.View');
-		$data["bool_add"] = $this->auth->_allowed('FrontEnd.Family.Add');
+        $this->auth->_have_permission('FrontEnd.Family.View');
+        $data["bool_add"] = $this->auth->_allowed('FrontEnd.Family.Add');
 
         Assets::clear_cache();
         Assets::add_js('jquery.validate.min.js'); 
@@ -522,17 +729,17 @@ class Applicant extends Admin_Controller{
         
         Template::set($data);
         Template::render('iframe');
-	}      
+    }      
     
-	public function data_bahasa()
-	{
+    public function data_bahasa()
+    {
         $data["language"] = $this->session->userdata('language');      
         
         
         $data["nilai_bahasa"] = $this->reference->referensi_nilai_bahasa(); 
         
-		$this->auth->_have_permission('FrontEnd.Language.View');
-		$data["bool_add"] = $this->auth->_allowed('FrontEnd.Language.Add');
+        $this->auth->_have_permission('FrontEnd.Language.View');
+        $data["bool_add"] = $this->auth->_allowed('FrontEnd.Language.Add');
 
         Assets::clear_cache();
         Assets::add_js('jquery.validate.min.js'); 
@@ -543,15 +750,15 @@ class Applicant extends Admin_Controller{
         
         Template::set($data);
         Template::render('iframe');
-	}       
+    }       
     
-	public function data_organisasi()
-	{
+    public function data_organisasi()
+    {
         $data["language"] = $this->session->userdata('language');      
         
         
-		$this->auth->_have_permission('FrontEnd.Organization.View');
-		$data["bool_add"] = $this->auth->_allowed('FrontEnd.Organization.Add');
+        $this->auth->_have_permission('FrontEnd.Organization.View');
+        $data["bool_add"] = $this->auth->_allowed('FrontEnd.Organization.Add');
 
         Assets::clear_cache();
         Assets::add_js('jquery.validate.min.js'); 
@@ -562,15 +769,15 @@ class Applicant extends Admin_Controller{
         
         Template::set($data);
         Template::render('iframe');
-	}  
+    }  
     
-	public function data_karya()
-	{
+    public function data_karya()
+    {
         $data["language"] = $this->session->userdata('language');      
         
         
-		$this->auth->_have_permission('FrontEnd.Publication.View');
-		$data["bool_add"] = $this->auth->_allowed('FrontEnd.Publication.Add');
+        $this->auth->_have_permission('FrontEnd.Publication.View');
+        $data["bool_add"] = $this->auth->_allowed('FrontEnd.Publication.Add');
 
         Assets::clear_cache();
         Assets::add_js('jquery.validate.min.js'); 
@@ -581,14 +788,14 @@ class Applicant extends Admin_Controller{
         
         Template::set($data);
         Template::render('iframe');
-	}        
+    }        
 
-	public function data_prestasi()
-	{
+    public function data_prestasi()
+    {
         $data["language"] = $this->session->userdata('language');      
         
-		$this->auth->_have_permission('FrontEnd.Achievements.View');
-		$data["bool_add"] = $this->auth->_allowed('FrontEnd.Achievements.Add');
+        $this->auth->_have_permission('FrontEnd.Achievements.View');
+        $data["bool_add"] = $this->auth->_allowed('FrontEnd.Achievements.Add');
 
         Assets::clear_cache();
         Assets::add_js('jquery.validate.min.js'); 
@@ -599,15 +806,15 @@ class Applicant extends Admin_Controller{
         
         Template::set($data);
         Template::render('iframe');
-	} 
+    } 
     
-   	public function data_lain()
-	{
+    public function data_lain()
+    {
         $data["language"] = $this->session->userdata('language');      
  
          
-		$this->auth->_have_permission('FrontEnd.Other.View');
-		$data["bool_add"] = $this->auth->_allowed('FrontEnd.Other.Add');
+        $this->auth->_have_permission('FrontEnd.Other.View');
+        $data["bool_add"] = $this->auth->_allowed('FrontEnd.Other.Add');
 
         $getPerson = $this->load_person();
         if (count($getPerson) > 0)
@@ -623,20 +830,20 @@ class Applicant extends Admin_Controller{
         
         Template::set($data);
         Template::render('iframe');
-	}        
+    }        
     
-	public function id()
-	{
+    public function id()
+    {
         $this->session->set_userdata('language', "bahasa");
         redirect('applicant');        
-	}    
+    }    
         
     
-	public function en()
-	{
+    public function en()
+    {
         $this->session->set_userdata('language', "english");
         redirect('applicant');
-	}    
+    }    
     
 /**
 * Education
@@ -648,14 +855,14 @@ class Applicant extends Admin_Controller{
     {
         if ($this->input->post('ajax'))
         {  
-            $id = $this->input->post('id');		
+            $id = $this->input->post('id');     
             $nama = $this->input->post('nama');
             $email = $this->input->post('email');
-			
+            
             $getPerson = $this->load_person();
             if ($email == "")
                 $email = $getPerson->AppUserListEmail;
-			
+            
             $jenjang = $this->input->post('jenjang');
             $institusi = $this->input->post('institusi');
             $jurusan = $this->input->post('jurusan');
@@ -670,10 +877,10 @@ class Applicant extends Admin_Controller{
             $letak = $this->input->post('letak');
             $last = $this->input->post('last');            
             
-			if ($id == "")
-				echo "A".$this->applicant->add_education($email, $jenjang, $institusi, $jurusan, $kota, $negara, $tahunMasuk, $tahunLulus, $nilai, $no_ijazah, $lulus, $gelar, $letak, $last);
+            if ($id == "")
+                echo $this->applicant->add_education($email, $jenjang, $institusi, $jurusan, $kota, $negara, $tahunMasuk, $tahunLulus, $nilai, $no_ijazah, $lulus, $gelar, $letak, $last);
             else
-				echo "B".$this->applicant->update_education($id, $email, $jenjang, $institusi, $jurusan, $kota, $negara, $tahunMasuk, $tahunLulus, $nilai, $no_ijazah, $lulus, $gelar, $letak, $last);
+                echo $this->applicant->update_education($id, $email, $jenjang, $institusi, $jurusan, $kota, $negara, $tahunMasuk, $tahunLulus, $nilai, $no_ijazah, $lulus, $gelar, $letak, $last);
         }
     }    
     
@@ -687,12 +894,12 @@ class Applicant extends Admin_Controller{
             $id = $this->input->post('id');
             echo $this->applicant->delete_education($id);
         }
-    }  	
-	
+    }   
+    
     /*
     * View Education
     */    
-	public function view_education()
+    public function view_education()
     {
         if ($this->input->post('ajax'))
         {  
@@ -744,70 +951,270 @@ class Applicant extends Admin_Controller{
                     Data gagal dimasukan, silakan coba lagi.
                 </div>';  
                 //tblDalam
-                $res .= '<table class="table table-hover" id="">';            
+                //$res .= '<table class="table table-hover" id="">'; 
+                    $res .='    <div class="tab-pane" id="education" style="padding: 15px;">
+                                    <div id="pendidikan"  style="margin-left:15%;">  
+                                        <div style="float:left;margin-top:-20px;">
+                                        <h4 >'. lang('Pendidikan').'</h4>
+                                        </div>';           
                 
                 $view = $this->session->userdata('view');
-                               
+                $i=1;               
                 foreach ($allEducation->result() as $row)
                 {
-                    $res .= "<tr>
-                                <td style='padding: 10px;'>
-                                    <table class='span8 tblDalam'>
-                                        <tr>
-                                            <td style='font-weight: bold;font-size: medium;' colspan='2'>".$row->aplEducationInstitution.", ".$row->aplEducationCity.", ".ucwords(strtolower($row->CountryName))."</td>
-                                        </tr>
-                                        <tr>
-                                            <td style='font-weight: bold;font-size: small;' colspan='2'>".$row->EducationLevelName." ".$row->aplEducationMajor."</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan='2'>".$row->aplEducationYearStart." ".lang('s.d')." ".$row->aplEducationYearEnd."</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan='2'>".lang('ipk').": ".$row->aplEducationGPA."</td>
-                                        </tr>";
-                                    if (trim($row->aplEducationCert) != ""){
-                                $res .= '<tr>
-                                            <td colspan="2">No. Ijazah: '.$row->aplEducationCert.'</td>
-                                        </tr>';
-                                    }
+                    if ($row->aplEducationDegreePos=="D") {
+                        $checkdepan='checked';
+                        $checkbelakang='';
+                    }
+                    if ($row->aplEducationDegreePos=="B") {
+                        $checkdepan='';
+                        $checkbelakang='checked';
+                    }
+                     $res.='<div>                                      
+                                <div class="modal-header">
+                                    <div style="padding-right:0;margin-right:0;float:right" >
+                                        <a data-toggle="modal" href="#education_edit'.$row->aplEducationID.'" class="btn"><i class="icon-edit"></i>&nbsp;'. lang('edit').'</a>
+                                    </div>
+                                    <div style="padding-right:0;margin-right:0;float:right" >
+                                        <a data-toggle="modal" href="#dialog-pendidikan" class="btn"><i class="icon-edit"></i>&nbsp;'. lang('tambah').'</a>
+                                    </div>
+                                    <div style="padding-right:0;margin-right:0;float:right" >
+                                        <a data-toggle="modal" href="" onClick="educationDelete('.$row->aplEducationID.',\''. $row->EducationLevelName.'\')"  class="btn"><i class="icon-remove"></i>&nbsp;'. lang('hapus').'</a>                                                
+                                    </div>
+                                </div>
+
+                                <div class="form-horizontal" style="padding-top: 10px;">
+                                    <div class="control-group">
+                                        <label class="control-label" for="jenjang"><b>'.lang('jenjang').' : </b></label> <label class="control-label-isi" >'. $row->EducationLevelName.'</label>                                        
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="institusi"><b>'.lang('institusi').' : </b></label> <label class="control-label-isi" >'. $row->aplEducationInstitution.'</label>                                         
+                                    </div>
+                                    <div class="control-group" id="jur">
+                                        <label class="control-label" for="jurusan"><b>'.lang('jurusan').' : </b></label> <label class="control-label-isi" >'. $row->aplEducationMajor.'</label> 
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="jurusan"><b>'.lang('kota').' : </b></label> <label class="control-label-isi" >'. $row->aplEducationCity.'</label> 
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="negara"><b>'.lang('negara').' : </b></label> <label class="control-label-isi" >'. $row->CountryName.'</label> 
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="tahunMasuk"><b>'.lang('tahun_masuk').' : </b></label> <label class="control-label-isi" >'. $row->aplEducationYearStart.'</label> 
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="tahunLulus"><b>'.lang('tahun_lulus').' : </b></label> <label class="control-label-isi" >'. $row->aplEducationYearEnd.'</label> 
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="no_ijazah"><b>'.lang('no_ijazah').' : </b></label> <label class="control-label-isi" >'. $row->aplEducationCert.'</label> 
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="lulus"><b>'.lang('lulus').' : </b></label> <label class="control-label-isi" >'. $row->aplEducationGraduate.'</label>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="gelar"><b>'.lang('gelar').' : </b></label> <label class="control-label-isi" >'. $row->aplEducationDegree.'</label>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="nilai"><b>'.lang('nilai_akhir').'/'.lang('ipk').' : </b></label> <label class="control-label-isi" >'. $row->aplEducationGPA.'</label> 
+                                    </div>                                        
+                                </div>';
+
+    /*==============================Education Edit==========================*/
+                        $res.='<div id="education_edit'.$row->aplEducationID.'" class="modal custom hide fade in" style="display: none; width: 750px;height:95%;overflow:scroll;top:2% !important;">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4>'.lang('Pendidikan').'</h4>
+                                    </div>';  
+                        $res.='<div class="form-horizontal" style="padding-top: 10px;">
+                                    <div class="control-group">
+                                        <label class="control-label" for="jenjang'.$row->aplEducationID.'">'.lang('jenjang').'</label>
+                                        <div class="controls">
+                                            <select name="jenjang" id="jenjang'.$row->aplEducationID.'" class="input-medium">
+                                                <option value="">'.lang('pilih').'</option>
+                        ';
+                        $pendidikan = $this->reference->referensi_jenjang_pendidikan(); 
+
+                                                    foreach ($pendidikan->result() as $row2)
+                                                    {
+                                                        if ($row->aplEducationLevel == $row2->EducationLevelCode)
+                                                            $selected = "selected='selected'";
+                                                        else
+                                                            $selected = "";
+                                                        $res.= '<option value="'.$row2->EducationLevelCode.'"'.$selected.'>'.$row2->EducationLevelName.'</option>';
+                                                    }
+                        $res .='                        
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="institusi'.$row->aplEducationID.'">'.lang('institusi').'</label>
+                                        <div class="controls">
+                                            <input type="text" name="institusi" id="institusi'.$row->aplEducationID.'" class="input-xlarge" placeholder="'.lang('institusi').'" value="'.$row->aplEducationInstitution.'"/>
+                                        </div>
+                                    </div>
+                                    <div class="control-group" id="jur">
+                                        <label class="control-label" for="jurusan'.$row->aplEducationID.'">'.lang('jurusan').'</label>
+                                        <div class="controls">
+                                            <input type="text" name="jurusan" id="jurusan'.$row->aplEducationID.'" class="input-xlarge" placeholder="'.lang('jurusan').'" value="'.$row->aplEducationMajor.'"/>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="kota'.$row->aplEducationID.'">'.lang('kota').'</label>
+                                        <div class="controls">
+                                            <input type="text" name="kota" id="kota'.$row->aplEducationID.'" class="input-xlarge" placeholder="'.lang('kota').'" value="'.$row->aplEducationCity.'"/>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="negara'.$row->aplEducationID.'">'.lang('negara').'</label>
+                                        <div class="controls">
+                                            <select name="negara" id="negara'.$row->aplEducationID.'" class="padd5AB">
+                                                <option value="">'.lang('pilih').' '.lang('negara').'</option>';
+                                                
+                                                    $negara = $this->reference->referensi_negara();   
+                                                    foreach ($negara->result() as $row2)
+                                                    {
+                                                        if ($row->aplEducationCountry == $row2->CountryCode)
+                                                            $selected = "selected='selected'";
+                                                        else
+                                                            $selected = "";
+                                                        $res .= '<option value="'.$row2->CountryCode.'"'.$selected.'>'.ucwords(strtolower($row2->CountryName)).'</option>';
+                                                    }
+                                                
+                        $res .='                    </select>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="tahunMasuk'.$row->aplEducationID.'">'.lang('tahun_masuk').'</label>
+                                        <div class="controls">
+                                            <select name="tahunMasuk" id="tahunMasuk'.$row->aplEducationID.'" class="input-small">
+                                                <option value="">'.lang('pilih').'</option>';
+                                                
+                                                    $tahunAkhir = (date("Y")-15);
+                                                    for ($i = (date("Y")+1); $i--; $i > $tahunAkhir)
+                                                    {
+
+                                                        if ($row->aplEducationYearStart == $i)
+                                                            $selected = "selected='selected'";
+                                                        else
+                                                            $selected = "";
+
+                                                        if ($i >= $tahunAkhir)
+                                                            $res .= '<option value="'.$i.'"'.$selected.'>'.$i.'</option>';
+                                                    }
+                                                
+                        $res .='            </select>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="tahunLulus'.$row->aplEducationID.'">'.lang('tahun_lulus').'</label>
+                                        <div class="controls">
+                                            <select name="tahunLulus" id="tahunLulus'.$row->aplEducationID.'" class="input-small">
+                                                <option value="">'.lang('pilih').'</option>';
+                                                
+                                                    $tahunAkhir = (date("Y")-15);
+                                                    for ($i = (date("Y")+1); $i--; $i > $tahunAkhir)
+                                                    {
+                                                        if ($row->aplEducationYearEnd == $i)
+                                                            $selected = "selected='selected'";
+                                                        else
+                                                            $selected = "";
+
+                                                        if ($i >= $tahunAkhir)
+                                                            $res .= '<option value="'.$i.'"'.$selected.'>'.$i.'</option>';
+                                                    }
+                                        $res .='</select>
+
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="no_ijazah'.$row->aplEducationID.'">'.lang('no_ijazah').'</label>
+                                        <div class="controls">
+                                            <input type="text" name="no_ijazah" id="no_ijazah'.$row->aplEducationID.'" class="input-large" placeholder="'.lang('no_ijazah').'" value="'.$row->aplEducationCert.'"/>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="lulus'.$row->aplEducationID.'">'.lang('lulus').'</label>
+                                        <div class="controls">
+                                            <input type="text" name="lulus" id="lulus'.$row->aplEducationID.'" class="input-large" placeholder="'.lang('lulus').'" value="'.$row->aplEducationGraduate.'"/>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="gelar'.$row->aplEducationID.'">'.lang('gelar').'</label>
+                                        <div class="controls">
+                                            <input type="text" name="gelar" id="gelar'.$row->aplEducationID.'" class="input-small" placeholder="'.lang('gelar').'" value="'. $row->aplEducationDegree.'"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="letak_gelar'.$row->aplEducationID.'">'.lang('letak_gelar').'</label>
+                                        <div class="controls">
+                                            <label class="radio inline padd5AB">
+                                                <input type="radio" name="letak_gelar" id="letakd'.$row->aplEducationID.'" value="D" checked="'.$checkdepan.'"/>
+                                                '.lang('gelar_depan').'
+                                            </label>
+                                            <label class="radio inline padd5AB">
+                                                <input type="radio" name="letak_gelar" id="letakb'.$row->aplEducationID.'" value="B" checked="'.$checkbelakang.'"/>
+                                                '.lang('gelar_belakang').'
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="nilai'.$row->aplEducationID.'">'.lang('nilai_akhir').'/'.lang('ipk').'</label>
+                                        <div class="controls">
+                                            <input type="text" name="nilai" id="nilai'.$row->aplEducationID.'" class="input-small" placeholder="'.lang('nilai_akhir').'" value="'.$row->aplEducationGPA.'"/>
+                                            <div class="alert alert-success" style="width: 200px;margin-top: 10px;">'.lang('pisah').'</div>
+                                        </div>
+                                        <div class="controls">
+                                            <input type="checkbox" name="last" id="last'.$row->aplEducationID.'" value="L" checked="'.$checkdepan.'"/>
+                                                Is Last Education?
+                                        </div>  
+                                    </div>                            
+                                </div>
+                                <div class="modal-footer">
+                                        <input type="hidden" name="hiddenIDEducation" id="hiddenIDEducation'.$row->aplEducationID.'" value="'.$row->aplEducationID.'"/>
+                                        <input type="submit" class="btn btn-info" name="simpan_Education" onClick="edit_education('.$row->aplEducationID.')" id="simpan_educationedit'.$row->aplEducationID.'" value="'.lang('simpan').'" />
+                                        <a class="btn" data-dismiss="modal">'.lang('batal').'</a>
+                                </div>
+                            </div>
+                        </div>';
+
+                        /*==============================Education Edit End======================*/
                             if ($bool_change || $bool_delete)        
-                            {
-                                $res .= '<tr>
-                                            <td>&nbsp;</td>
-                                            <td style="text-align: right;">
+                            {                                
+                                $res .= '
                                                 <div class="btn-group">';
-                                                if ($bool_change)
-                                                {
-                                                    $res .= '<a class="btn enabled" href="#" title="'.lang('edit').'" onclick="educationEdit('.$row->aplEducationID.')"><i class="icon-pencil "></i></a>';
-                                                }
-                                                if ($bool_delete)
-                                                {
-                                                    $res .= '<a class="btn enabled"  data-toggle="modal"  href="#dialog-delete-education" title="'.lang('hapus').'" onclick="educationDelete(\''.$row->aplEducationID.'\', \''.$row->EducationLevelName.'\', \''.$row->aplEducationMajor.'\', \''.$row->aplEducationInstitution.'\')"><i class="icon-trash "></i></a>';
-                                                }
-                                       $res .= '</div>
-                                            </td>  
-                                        </tr>';
-                            }                                           
-                            $res .= '</table>                        
-                                </td>
-                            </tr>';
-                }
-                $res .= '</table>';                  
-            } else {
-                $res .= '<div class="alert alert-error">
-                            '.lang('kosong').'
-                        </div>';                
-            }
+                                        if ($bool_change)
+                                        {
+                                            $res .= '<a class="btn enabled" href="#" title="'.lang('edit').'" onclick="workExEdit('.$row->aplEducationID.')"><i class="icon-pencil "></i></a>';
+                                        }
+                                        if ($bool_delete)
+                                        {
+                                            $res .= '<a class="btn enabled"  data-toggle="modal"  href="#dialog-delete-work" title="'.lang('hapus').'" onclick="workExDelete(\''.$row->aplEducationID.'\', \''.$row->aplEducationInstitution.'\')"><i class="icon-trash "></i></a>';
+                                        }
+                                        $res .= '</div>';
+                            }                        
+                                $i++;
+                        }
+                        $res .= '</div></div>';            
+                    } else {
+                        $res .= '<script>$("#success_work").hide();</script>
+                                <div class="alert alert-error">
+                                    '.lang('kosong').'
+                                </div>';
+                    }         
+                      
             echo $res;
         }
     }
+
+
 /**
 * End Education
 */    
 
 /**
 * Course
-*/    	
+*/      
     /*
     * Add Course
     */ 
@@ -897,59 +1304,233 @@ class Applicant extends Admin_Controller{
             
             if ($allCourse->num_rows() > 0)
             {
-                $res .= 
-                '<div class="alert alert-success hide" id="success_course">
-                    Data berhasil dimasukan.
-                </div>
-                <div class="alert alert-error hide" id="error_course">
-                    Data gagal dimasukan, silakan coba lagi.
-                </div>';  
-                $res .= '<table class="table table-hover" id="">';            
+                $res .='    <div class="tab-pane" id="course" style="padding: 15px;">
+                                <div id="pendidikan"  style="margin-left:15%;">
+                                        <div style="float:left;margin-top:-20px;">
+                                        <h4 >'. lang('pelatihan').'</h4>
+                                        </div>';            
             
                 $view = $this->session->userdata('view');
 
-                foreach ($allCourse->result() as $row)
+                foreach ($allCourse->result() as $row)   
                 {
-                    $res .= "<tr>
-                                <td style='padding: 10px;'>
-                                    <table class='span8 tblDalam'>
-                                        <tr>
-                                            <td style='font-weight: bold;font-size: small;' colspan='2'>".$row->aplCourseOrganizer.", ".$row->aplCourseCity."</td>
-                                        </tr>
-                                        <tr>
-                                            <td style='font-weight: bold;font-size: medium;' colspan='2'>".$row->aplCourseName."</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan='2'>".date('d M Y', strtotime($row->aplCourseStart))." ".lang('s.d')." ".date('d M Y', strtotime($row->aplCourseEnd))."</td>
-                                        </tr>";
-                                    if (trim($row->aplCourseNoCertificate) != ""){
-                                $res .= '<tr>
-                                            <td colspan="2">No: '.$row->aplCourseNoCertificate.'</td>
-                                        </tr>';
-                                    }
-                            if ($bool_change || $bool_delete)        
-                            {
-                                $res .= '<tr>
-                                            <td>&nbsp;</td>
-                                            <td style="text-align: right;">
-                                                <div class="btn-group">';
-                                                    if ($bool_change)
-                                                    {
-                                                        $res .= '<a class="btn enabled" href="#" title="'.lang('edit').'" onclick="courseEdit('.$row->aplCourseID.')"><i class="icon-pencil "></i></a>';
-                                                    }
-                                                    if ($bool_delete)
-                                                    {
-                                                        $res .= '<a class="btn enabled"  data-toggle="modal"  href="#dialog-delete-course" title="'.lang('hapus').'" onclick="courseDelete(\''.$row->aplCourseID.'\', \''.$row->aplCourseName.'\')"><i class="icon-trash "></i></a>';
-                                                    }
-                                        $res .= '</div>
-                                            </td>  
-                                        </tr>';
-                            }                                                                    
-                            $res .= '</table>                        
-                                </td>
-                            </tr>';
+                    $res.=' <div>                                       
+                                <div class="modal-header">
+                                    <div style="padding-right:0;margin-right:0;float:right" >
+                                        <a data-toggle="modal" href="#course_edit'.$row->aplCourseID.'" class="btn"><i class="icon-edit"></i>&nbsp;'. lang('edit').'</a>
+                                    </div>
+                                    <div style="padding-right:0;margin-right:0;float:right" >
+                                        <a data-toggle="modal" href="#dialog-non-pendidikan" class="btn"><i class="icon-plus"></i>&nbsp;'. lang('tambah').'</a>
+                                    </div>
+                                    <div style="padding-right:0;margin-right:0;float:right" >
+                                        <a data-toggle="modal" href="" onClick="courseDelete('.$row->aplCourseID.',\''. $row->aplCourseName.'\')"  class="btn"><i class="icon-remove"></i>&nbsp;'. lang('hapus').'</a>
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="form-horizontal" style="padding-top: 10px;">
+                                    <div class="control-group">
+                                        <label class="control-label" for="jenjang"><b>'.lang('pelatihan').' : </b></label> <label class="control-label-isi" >'. $row->aplCourseName.'</label>                                        
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="institusi"><b>'.lang('penyelenggara').' : </b></label> <label class="control-label-isi" >'. $row->aplCourseOrganizer.'</label>                                         
+                                    </div>
+                                    <div class="control-group" id="jur">
+                                        <label class="control-label" for="jurusan"><b>'.lang('kota').' : </b></label> <label class="control-label-isi" >'. $row->aplCourseCity.'</label> 
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="jurusan"><b>'.lang('sertifikat').' : </b></label> <label class="control-label-isi" >'. $row->aplCourseNoCertificate.'</label> 
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="tahunMasuk"><b>'.lang('tanggal_awal').' : </b></label> <label class="control-label-isi" >'. $row->aplCourseStart.'</label> 
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="tahunLulus"><b>'.lang('tanggal_akhir').' : </b></label> <label class="control-label-isi" >'. $row->aplCourseEnd.'</label> 
+                                    </div>                                      
+                                </div>
+                            </div>';
+                            /*==============================Course Edit==========================*/
+                        $res.='<div id="course_edit'.$row->aplCourseID.'" class="modal custom hide fade in" style="display: none; width: 680px;">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4>'.lang('pelatihan').'</h4>
+                                    </div>'; 
+
+
+                        $res.=  '
+                                        <div class="form-horizontal" style="margin-left: -50px;">';
+                                            $res.=  '<div class="control-group">
+                                                <label class="control-label" for="pelatihan">'.lang('pelatihan').'</label>
+                                                <div class="controls">
+                                                    <textarea name="pelatihan" id="pelatihan'.$row->aplCourseID.'" placeholder="'.lang('pelatihan').'" rows="3" style="width: 300px;">'.$row->aplCourseName.'</textarea>
+                                                </div>
+                                            </div>';
+                                            $res.=  '<div class="control-group">
+                                                <label class="control-label" for="penyelenggara">'.lang('penyelenggara').'</label>
+                                                <div class="controls">
+                                                    <input type="text" name="penyelenggara" id="penyelenggara'.$row->aplCourseID.'" class="input-xlarge" placeholder="'.lang('penyelenggara').'" value="'. $row->aplCourseOrganizer.'"/>
+                                                </div>
+                                            </div>';
+                                            $res.=  '<div class="control-group">
+                                                <label class="control-label" for="kota_penyelenggara">'.lang('kota').' '.lang('penyelenggara').'</label>
+                                                <div class="controls">
+                                                    <input type="text" name="kota_penyelenggara" id="kota_penyelenggara'.$row->aplCourseID.'" class="input-xlarge" placeholder="'.lang('kota').' '.lang('penyelenggara').'" value="'.$row->aplCourseCity.'"/>
+                                                </div>
+                                            </div>';
+                                            $res.=  '<div class="control-group">
+                                                <label class="control-label" for="sertifikat">'.lang('sertifikat').'</label>
+                                                <div class="controls">
+                                                    <input type="text" name="sertifikat" id="sertifikat'.$row->aplCourseID.'" class="input-xlarge" placeholder="'.lang('sertifikat').'" value="'.$row->aplCourseNoCertificate.'"/>
+                                                </div>
+                                            </div>';
+                                            $res.=  '<div class="control-group">
+                                                <label class="control-label" for="tanggal_awal">'.lang('tanggal_awal').'</label>
+                                                <div class="controls">
+                                                    <select name="tanggalPelatihanAwal" id="tanggalPelatihanAwal'.$row->aplCourseID.'" style="width: 100px;" onchange="courseStartDate()">
+                                                        <option value="">'.lang('tanggal').'</option>';
+                                                        
+                                                            $tgl = 1;
+                                                            for($tgl == 1; $tgl <= 31; $tgl++)
+                                                            {
+                                                                if ($row->aplCourseStart != "")
+                                                                    $date = date('d', strtotime($row->aplCourseStart));
+                                                                else
+                                                                    $date = "";
+                                                                if ($date == $tgl)
+                                                                    $selected = "selected";
+                                                                else
+                                                                    $selected = "";
+                                                                $res .= '<option value="'.$tgl.'"'.$selected.'>'.$tgl.'</option>';
+                                                            }
+                                                        
+                                            $res .='        </select>
+                                                    <select name="bulanPelatihanAwal" id="bulanPelatihanAwal'.$row->aplCourseID.'" style="width: 110px;" onchange="courseStartDate()">
+                                                        <option value="">'.lang('bulan').'</option>';
+                                                        
+                                                        $bulan = $this->reference->referensi_bulan();   
+                                                            foreach ($bulan->result() as $row2)
+                                                            {
+                                                                if ($language=="bahasa")
+                                                                    $bln = $row2->MonthNameID;
+                                                                else
+                                                                    $bln = $row2->MonthNameEN;
+
+                                                                if ($row->aplCourseStart != "")
+                                                                    $month = date('m', strtotime($row->aplCourseStart));
+                                                                else
+                                                                    $month = "";
+
+                                                                if ($month == $row2->MonthID)
+                                                                    $selected = "selected";
+                                                                else
+                                                                    $selected = "";
+
+                                                                $res .= '<option value="'.$row2->MonthID.'"'.$selected.'>'.$bln.'</option>';
+                                                            }
+                                                        
+                                            $res .='</select>
+                                                    <select name="tahunPelatihanAwal" id="tahunPelatihanAwal'.$row->aplCourseID.'" class="input-small" onchange="courseStartDate()">
+                                                        <option value="">'.lang('tahun').'</option>';
+                                                        
+                                                            $tahun = date('Y');
+                                                            $tahun56 = date('Y')-56; //min 56 yrs old
+                                                            for($thn = $tahun; $thn >= $tahun56; $thn--)
+                                                            {
+                                                                if ($row->aplCourseStart != "")
+                                                                    $year = date('Y', strtotime($row->aplCourseStart));
+                                                                else
+                                                                    $year = "";
+
+                                                                if ($year == $thn)
+                                                                    $selected = "selected";
+                                                                else
+                                                                    $selected = "";
+
+                                                                $res .='<option value="'.$thn.'"'.$selected.'>'.$thn.'</option>';
+                                                            }
+                                                        
+                                            $res .='</select>
+                                                </div>
+                                            </div>';
+                                            $res.=  '<div class="control-group">
+                                                <label class="control-label" for="tanggal_akhir">'.lang('tanggal_akhir').'</label>
+                                                <div class="controls">
+                                                    <select name="tanggalPelatihanAkhir" id="tanggalPelatihanAkhir'.$row->aplCourseID.'" style="width: 100px;" onchange="courseStartEnd()">
+                                                        <option value="">'.lang('tanggal').'</option>';
+                                                        
+                                                            $tgl = 1;
+                                                            for($tgl == 1; $tgl <= 31; $tgl++)
+                                                            {
+                                                                if ($row->aplCourseEnd != "")
+                                                                    $date = date('d', strtotime($row->aplCourseEnd));
+                                                                else
+                                                                    $date = "";
+                                                                if ($date == $tgl)
+                                                                    $selected = "selected";
+                                                                else
+                                                                    $selected = "";
+                                                                $res .= '<option value="'.$tgl.'"'.$selected.'>'.$tgl.'</option>';
+                                                            }
+                                                        
+                                            $res .='</select>
+                                                    <select name="bulanPelatihanAkhir" id="bulanPelatihanAkhir'.$row->aplCourseID.'" style="width: 110px;" onchange="courseStartEnd()">
+                                                        <option value="">'.lang('bulan').'</option>';
+                                                        
+                                                            foreach ($bulan->result() as $row2)
+                                                            {
+                                                                if ($language=="bahasa")
+                                                                    $bln = $row2->MonthNameID;
+                                                                else
+                                                                    $bln = $row2->MonthNameEN;
+
+                                                                if ($row->aplCourseEnd != "")
+                                                                    $month = date('m', strtotime($row->aplCourseEnd));
+                                                                else
+                                                                    $month = "";
+
+                                                                if ($month == $row2->MonthID)
+                                                                    $selected = "selected";
+                                                                else
+                                                                    $selected = "";
+
+                                                                $res .= '<option value="'.$row2->MonthID.'"'.$selected.'>'.$bln.'</option>';
+                                                            }
+                                                        
+                                            $res .='</select>
+                                                    <select name="tahunPelatihanAkhir" id="tahunPelatihanAkhir'.$row->aplCourseID.'" class="input-small" onchange="courseStartEnd()">
+                                                        <option value="">'.lang('tahun').'</option>';
+                                                        
+                                                            $tahun = date('Y');
+                                                            $tahun56 = date('Y')-56; //min 56 yrs old
+                                                            for($thn = $tahun; $thn >= $tahun56; $thn--)
+                                                            {
+                                                                if ($row->aplCourseEnd != "")
+                                                                    $year = date('Y', strtotime($row->aplCourseEnd));
+                                                                else
+                                                                    $year = "";
+
+                                                                if ($year == $thn)
+                                                                    $selected = "selected";
+                                                                else
+                                                                    $selected = "";
+
+                                                                $res .= '<option value="'.$thn.'"'.$selected.'>'.$thn.'</option>';
+                                                            }
+                                                        
+                                            $res .='</select>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                <div class="modal-footer">
+                                        <input type="hidden" name="hiddenIDCourse" id="hiddenIDCourse'.$row->aplCourseID.'" value="'.$row->aplCourseID.'"/>
+                                        <input type="submit" class="btn btn-info" name="simpan_course" onClick="edit_course('.$row->aplCourseID.')" id="simpan_courseEdit'.$row->aplCourseID.'" value="'.lang('simpan').'" />
+                                        <a class="btn" data-dismiss="modal">'.lang('batal').'</a>
+                                </div></div>';
+                            /*=================================Course Edit End===========================*/        
+
                 }
-                $res .= '</table>';                  
+                $res .= '</div></div></div>';                  
             } else {
                 $res .= '
                         <script>$("#success_course").hide();</script>
@@ -961,6 +1542,32 @@ class Applicant extends Admin_Controller{
             echo $res;
         }
     }    
+
+    public function edit_course()
+    {
+
+        if ($this->input->post('ajax'))
+        {  
+            $id = $this->input->post('id');            
+            
+            $getPerson = $this->load_person();
+            $email = $getPerson->AppUserListEmail;
+                            
+            $name = $this->input->post('name');
+            $penyelenggara = $this->input->post('penyelenggara');
+            $kota_penyelenggara = $this->input->post('kota');
+            $sertifikat = $this->input->post('sertifikat');
+            $start = $this->input->post('start');
+            $end = $this->input->post('end');
+            //echo $nama." - ".$email." - ".$perusahaan." - ".$alamat_perusahaan." - ".$kota_perusahaan." - ".$telp_perusahaan." - ".$atasan
+            //." - ".$posisi." - ".$mulai." - ".$akhir." - ".$gaji_awal." - ".$gaji_akhir." - ".$deskripsi." - ".$alasan_keluar;
+            
+            if ($id == "")
+                echo $this->applicant->add_course($email, $name, $penyelenggara, $kota_penyelenggara, $sertifikat, $start, $end);
+            else
+                echo $this->applicant->update_course($id, $email, $name, $penyelenggara, $kota_penyelenggara, $sertifikat, $start, $end);
+        }
+    }          
 /**
 * End Course
 */    
@@ -1020,7 +1627,47 @@ class Applicant extends Admin_Controller{
             else
                 echo $this->applicant->update_work_experience($id, $email, $perusahaan, $alamat_perusahaan, $kota_perusahaan, $telp_perusahaan, $atasan, $posisi, $mulai, $akhir, $gaji_awal, $gaji_akhir, $deskripsi, $alasan_keluar);
         }
+    }
+    public function edit_work_experience()
+    {
+        if ($this->input->post('ajax'))
+        {  
+            $id = $this->input->post('id');            
+            
+            $getPerson = $this->load_person();
+            $email = $getPerson->AppUserListEmail;
+                            
+            $perusahaan = $this->input->post('perusahaan');
+            $alamat_perusahaan = $this->input->post('alamat_perusahaan');
+            $kota_perusahaan = $this->input->post('kota_perusahaan');
+            $telp_perusahaan = $this->input->post('telp_perusahaan');
+            $atasan = $this->input->post('atasan');
+            $posisi = $this->input->post('posisi');
+            $bulanKerjaAwal = $this->input->post('bulanKerjaAwal');
+            $tahunKerjaAwal = $this->input->post('tahunKerjaAwal');
+            $bulanKerjaAkhir = $this->input->post('bulanKerjaAkhir');
+            $tahunKerjaAkhir = $this->input->post('tahunKerjaAkhir');
+            $masih_bekerja = $this->input->post('masih_bekerja');
+            $mulai = $tahunKerjaAwal."-".$bulanKerjaAwal;
+            if ($masih_bekerja == "true")
+                $akhir = "Sekarang";
+            else
+                $akhir = $tahunKerjaAkhir."-".$bulanKerjaAkhir;
+            
+            $gaji_awal = $this->input->post('gaji_awal');
+            $gaji_akhir = $this->input->post('gaji_akhir');
+            $deskripsi = $this->input->post('deskripsi');
+            $alasan_keluar = $this->input->post('alasan_keluar');
+            //echo $nama." - ".$email." - ".$perusahaan." - ".$alamat_perusahaan." - ".$kota_perusahaan." - ".$telp_perusahaan." - ".$atasan
+            //." - ".$posisi." - ".$mulai." - ".$akhir." - ".$gaji_awal." - ".$gaji_akhir." - ".$deskripsi." - ".$alasan_keluar;
+            
+            if ($id == "")
+                echo $this->applicant->add_work_experience($email, $perusahaan, $alamat_perusahaan, $kota_perusahaan, $telp_perusahaan, $atasan, $posisi, $mulai, $akhir, $gaji_awal, $gaji_akhir, $deskripsi, $alasan_keluar);
+            else
+                echo $this->applicant->update_work_experience($id, $email, $perusahaan, $alamat_perusahaan, $kota_perusahaan, $telp_perusahaan, $atasan, $posisi, $mulai, $akhir, $gaji_awal, $gaji_akhir, $deskripsi, $alasan_keluar);
+        }
     }          
+              
     
     /*
     * Delete Work Experience
@@ -1085,50 +1732,297 @@ class Applicant extends Admin_Controller{
 
             if ($allWork->num_rows() > 0)
             {
-                $res .= 
-                '<div class="alert alert-success hide" id="success_work">
+                /*$res .= 
+                '
+                <div class="alert alert-success hide" id="success_work">
                     Data berhasil dimasukan.
                 </div>
                 <div class="alert alert-error hide" id="error_work">
                     Data gagal dimasukan, silakan coba lagi.
-                </div>';  
-                $res .= '<table class="table table-hover">';
+                </div>';  */
+                $res .='<div class="tab-pane" id="pengalaman_kerja" style="padding: 15px;">
+                                        <div style="float:left;margin-top:-20px;">
+                                        <h4 >'. lang('pengalaman_kerja').'</h4>
+                                        </div>
+                                    ';
+
+                //$res .= '<table class="table table-hover">';
                 $view = $this->session->userdata('view');
+                $i=1;
                 foreach ($allWork->result() as $row)
                 {
-                    $res .= "<tr>
-                                <td style='padding: 10px;'>
-                                    <table class='span8 tblDalam'>
-                                        <tr>
-                                            <td style='font-weight: bold;font-size: small;' colspan='2'>".$row->aplWorkExPosition."</td>
-                                        </tr>
-                                        <tr>
-                                            <td style='font-weight: bold;font-size: medium;' colspan='2'>".$row->aplWorkExCompany.", ".$row->aplWorkExCity."</td>
-                                        </tr>
-                                        <tr>";
-                                        if ($row->aplWorkExEnd != "Sekarang")
-                                        {
-                                            $row->aplWorkExEnd = date('M Y', strtotime($row->aplWorkExEnd));
-                                            $end = new DateTime($row->aplWorkExEnd);
-                                        }else
-                                            $end = new DateTime();
-                                        $datestart = new DateTime($row->aplWorkExStart);
-                                        $dateend = $end;
-                                        $interval = date_diff($datestart, $dateend);
-                                        $intr = $interval->format("(%y ".lang('tahun').", %m ".lang('bulan').", %d ".lang('hari').")");
-                                    $res .= '<td colspan="2">'.date('M Y', strtotime($row->aplWorkExStart)).' '.lang('s.d').' '.$row->aplWorkExEnd.' '.$intr.'</td>
-                                        </tr>
-                                        <tr>';
-                                        if ($row->aplWorkExDescription != "")
-                                        {
-                                    $res .= '<td colspan="2">Description: '.$row->aplWorkExDescription.'</td>';
-                                        }                                    
-                                $res .= '</tr>';
+
+
+/*=================================================*/
+
+
+
+                                    $res.='                                        
+                                        <div class="modal-header">
+                                            <div style="padding-right:0;margin-right:0;float:right" >
+                                                <a data-toggle="modal" href="#pengalaman_kerja_edit'.$i.'" class="btn"><i class="icon-edit"></i>&nbsp;'. lang('edit').'</a>
+                                            </div>
+                                            <div style="padding-right:0;margin-right:0;float:right" >
+                                                <a data-toggle="modal" href="#dialog-pengalaman" class="btn"><i class="icon-edit"></i>&nbsp;'. lang('tambah').'</a>
+                                            </div>
+                                            <div style="padding-right:0;margin-right:0;float:right" >
+                                                <a data-toggle="modal" href="" onClick="workExDelete('.$row->aplWorkExperienceID.',\''. $row->aplWorkExCompany.'\')"  class="btn"><i class="icon-remove"></i>&nbsp;'. lang('hapus').'</a>
+                                                
+                                            </div>
+                                        </div>
+                                        <div id="pengalaman"  style="margin-left:15%;">
+                                            <div class="form-horizontal" style="margin-left: -40px;">
+                                                <div class="control-group">
+                                                    <label class="control-label" for="perusahaan"><b>'. lang('perusahaan').' '.$i.' : </b></label> <label  class="control-label-isi" >'. $row->aplWorkExCompany.'</label>                                   
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="alamat_perusahaan"><b>'. lang('alamat').' : </b></label> <label class="control-label-isi" >'.  $row->aplWorkExAddress .'</label>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="kota_perusahaan"><b>'.  lang('kota'). ' : </b></label> <label class="control-label-isi" >'. $row->aplWorkExCity.'</label>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="telp_perusahaan"><b>'.  lang('no_telp').' : </b></label> <label class="control-label-isi" >'. $row->aplWorkPhoneNumber.'</label>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="atasan"><b>'. lang('atasan').' : </b></label> <label class="control-label-isi" >'.  $row->aplWorkExLastSpv.'</label>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="posisi"><b>'. lang('posisi').' : </b></label> <label class="control-label-isi" >'.  $row->aplWorkExPosition.'</label>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="periode_kerja"><b>'. lang('periode').' : </b></label>';
+                                                if ($row->aplWorkExEnd != "Sekarang")
+                                                {
+                                                    $row->aplWorkExEnd = date('M Y', strtotime($row->aplWorkExEnd));
+                                                    $end = new DateTime($row->aplWorkExEnd);
+                                                }
+                                                else
+                                                    $end = new DateTime();
+                                                $datestart = new DateTime($row->aplWorkExStart);
+                                                $dateend = $end;
+                                                $interval = date_diff($datestart, $dateend);
+                                                $intr = $interval->format("(%y ".lang('tahun').", %mm ".lang('bulan').", %d ".lang('hari').")");
+                                        $res .= '   <label class="control-label-isi" >'.date('M Y', strtotime($row->aplWorkExStart)).' '.lang('s.d').' '.$row->aplWorkExEnd.' '.$intr.'</label>';
+                                        $res .=        '
+                                                </div>
+
+                                                <div class="control-group">
+                                                    <label class="control-label" for="gaji_awal"><b>'.lang('gaji_awal').' : </b></label> <label class="control-label-isi" >' .$row->aplWorkExStartSalary.'</label>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="gaji_akhir"><b>'.lang('gaji_akhir').' : </b></label> <label class="control-label-isi" >'.$row->aplWorkExEndSalary.'</label>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="deskripsi"><b>'.lang('deskripsi').' : </b></label> <label class="control-label-isi" >'.$row->aplWorkExDescription.'</label>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="alasan_keluar"><b>'.  lang('alasan_keluar').' : </b></label> <label class="control-label-isi" >'.  $row->aplWorkExReasonLeave.'</label>
+                                                </div>
+                                            </div>
+                                        </div>';
+
+                                $res.='<div id="pengalaman_kerja_edit'.$row->aplWorkExperienceID.'" class="modal custom hide fade in" style="display: none; width: 680px;">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4>'.lang('pengalaman_kerja').'</h4>
+                                    </div>';                                    
+                                $res.='<div class="modal-body">
+                                        <div class="form-horizontal" style="margin-left: -40px;">
+                                            <div class="control-group">
+                                                <label class="control-label" for="perusahaan">'.lang('perusahaan').'</label>
+                                                <div class="controls">
+                                                    <input type="text" name="perusahaan" id="perusahaan'.$row->aplWorkExperienceID.'" class="input-xlarge" placeholder="'.lang('perusahaan').'"  value="'.$row->aplWorkExCompany.'"/>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="alamat_perusahaan">'.lang('alamat').'</label>
+                                                <div class="controls">
+                                                    <textarea name="alamat_perusahaan" id="alamat_perusahaan'.$row->aplWorkExperienceID.'" placeholder="'.lang('alamat').'" rows="3" style="width: 300px;">'.$row->aplWorkExAddress.'</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="kota_perusahaan">'.lang('kota').'</label>
+                                                <div class="controls">
+                                                    <input type="text" name="kota_perusahaan" id="kota_perusahaan'.$row->aplWorkExperienceID.'" class="input-xlarge" placeholder="'.lang('kota').'"  value="'. $row->aplWorkExCity.'"/>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="telp_perusahaan">'.lang('no_telp').'</label>
+                                                <div class="controls">
+                                                    <input type="text" name="telp_perusahaan" id="telp_perusahaan'.$row->aplWorkExperienceID.'" class="input-xlarge hp" placeholder="'.lang('no_telp').'"  value="'.$row->aplWorkPhoneNumber.'"/>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="atasan">'.lang('atasan').'</label>
+                                                <div class="controls">
+                                                    <input type="text" name="atasan" id="atasan'.$row->aplWorkExperienceID.'" class="input-xlarge" placeholder="'.lang('atasan').'"  value="'.$row->aplWorkExLastSpv.'"/>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="posisi">'.lang('posisi').'</label>
+                                                <div class="controls">
+                                                    <input type="text" name="posisi" id="posisi'.$row->aplWorkExperienceID.'" class="input-xlarge" placeholder="'.lang('posisi').'"  value="'.$row->aplWorkExPosition.'"/>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="periode_kerja">'.lang('periode').'</label>
+                                                <div class="controls">
+                                                    <select name="bulanKerjaAwal" id="bulanKerjaAwal'.$row->aplWorkExperienceID.'" style="width: 110px;" onchange="courseStartDate()">
+                                                        <option value="">'.lang('bulan').'</option>';
+                                                        $bulan = $this->reference->referensi_bulan();   
+                                                            foreach ($bulan->result() as $row2)
+                                                            {
+                                                                if ($language=="bahasa")
+                                                                    $bln = $row2->MonthNameID;
+                                                                else
+                                                                    $bln = $row2->MonthNameEN;
+
+                                                                if ($row->aplWorkExStart != "")
+                                                                    $month = date('m', strtotime($row->aplWorkExStart));
+                                                                else
+                                                                    $month = "";
+
+                                                                if ($month == $row2->MonthID)
+                                                                    $selected = "selected";
+                                                                else
+                                                                    $selected = "";
+
+                                                                $res.='<option value="'.$row2->MonthID.'"'.$selected.'>'.$bln.'</option>';
+                                                            }
+                                                       
+                                                $res.='</select>';
+                                                $res.='<select name="tahunKerjaAwal" id="tahunKerjaAwal'.$row->aplWorkExperienceID.'" class="input-small" onchange="courseStartDate()">
+                                                        <option value="">'.lang('tahun').'</option>';
+                                                        
+                                                            $tahun = date('Y');
+                                                            $tahun56 = date('Y')-56; //min 56 yrs old
+                                                            for($thn = $tahun; $thn >= $tahun56; $thn--)
+                                                            {
+                                                                if ($row->aplWorkExStart != "")
+                                                                    $year = date('Y', strtotime($row->aplWorkExStart));
+                                                                else
+                                                                    $year = "";
+
+                                                                if ($year == $thn)
+                                                                    $selected = "selected";
+                                                                else
+                                                                    $selected = "";
+
+                                                             $res.= '<option value="'.$thn.'"'.$selected.'>'.$thn.'</option>';
+                                                            }
+                                                        
+                                                $res.='</select>
+                                                    s.d
+                                                    <select name="bulanKerjaAkhir" id="bulanKerjaAkhir'.$row->aplWorkExperienceID.'" style="width: 110px;" onchange="courseStartEnd()">
+                                                        <option value="">'.lang('bulan').'</option>';
+                                                        
+                                                            foreach ($bulan->result() as $row2)
+                                                            {
+                                                                if ($language=="bahasa")
+                                                                    $bln = $row2->MonthNameID;
+                                                                else
+                                                                    $bln = $row2->MonthNameEN;
+
+                                                                if ($row->aplWorkExEnd != "")
+                                                                    $month = date('m', strtotime($row->aplWorkExEnd));
+                                                                else
+                                                                    $month = "";
+
+                                                                if ($month == $row2->MonthID)
+                                                                    $selected = "selected";
+                                                                else
+                                                                    $selected = "";
+
+                                                                $res.= '<option value="'.$row2->MonthID.'"'.$selected.'>'.$bln.'</option>';
+                                                            }
+                                                        
+                                                $res.='</select>
+                                                    <select name="tahunKerjaAkhir" id="tahunKerjaAkhir'.$row->aplWorkExperienceID.'" class="input-small" onchange="courseStartEnd()">
+                                                        <option value="">'.lang('tahun').'</option>';
+                                                        
+                                                            $tahun = date('Y');
+                                                            $tahun56 = date('Y')-56; //min 56 yrs old
+                                                            for($thn = $tahun; $thn >= $tahun56; $thn--)
+                                                            {
+                                                                if ($row->aplWorkExEnd != "")
+                                                                    $year = date('Y', strtotime($row->aplWorkExEnd));
+                                                                else
+                                                                    $year = "";
+
+                                                                if ($year == $thn)
+                                                                    $selected = "selected";
+                                                                else
+                                                                    $selected = "";
+
+                                                                $res.='<option value="'.$thn.'"'.$selected.'>'.$thn.'</option>';
+                                                            }
+                                                        
+                                                $res.='</select>
+                                                    <label for="masih_bekerja">
+                                                        <input type="checkbox" name="masih_bekerja" id="masih_bekerja'.$row->aplWorkExperienceID.'"/>
+                                                        '.lang('masih_bekerja').'
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="control-group">
+                                                <label class="control-label" for="gaji_awal">'.lang('gaji_awal').'</label>
+                                                <div class="controls">
+                                                    <input type="text" name="gaji_awal" id="gaji_awal'.$row->aplWorkExperienceID.'" class="input-medium gaji" placeholder="'.lang('gaji_awal').'" value="'. $row->aplWorkExStartSalary.'"/>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="gaji_akhir">'.lang('gaji_akhir').'</label>
+                                                <div class="controls">
+                                                    <input type="text" name="gaji_akhir" id="gaji_akhir'.$row->aplWorkExperienceID.'" class="input-medium gaji" placeholder="'.lang('gaji_akhir').'" value="'. $row->aplWorkExEndSalary.'"/>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="deskripsi">'.lang('deskripsi').'</label>
+                                                <div class="controls">
+                                                    <textarea name="deskripsi" id="deskripsi'.$row->aplWorkExperienceID.'" placeholder="'.lang('deskripsi').'" rows="3" style="width: 300px;">'.$row->aplWorkExDescription.'</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="alasan_keluar">'.lang('alasan_keluar').'</label>
+                                                <div class="controls">
+                                                    <textarea name="alasan_keluar" id="alasan_keluar'.$row->aplWorkExperienceID.'" placeholder="'.lang('alasan_keluar').'" rows="3" style="width: 300px;">'.$row->aplWorkExReasonLeave.'</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>';
+                            $res.= '<div class="modal-footer">
+                                        <input type="hidden" name="hiddenIDPengalaman" id="hiddenIDPengalaman'.$row->aplWorkExperienceID.'" value="'.$row->aplWorkExperienceID.'"/>
+                                        <input type="submit" class="btn btn-info" name="simpan_pengalaman" onClick="edit_work('.$row->aplWorkExperienceID.')" id="simpan_pengalamanEdit'.$row->aplWorkExperienceID.'" value="'.lang('simpan').'" />
+                                        <a class="btn" data-dismiss="modal">'.lang('batal').'</a>
+                                    </div>
+                                </div>';
+
+
+/*=================================================*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    
                             if ($bool_change || $bool_delete)        
                             {                                
-                                $res .= '<tr>
-                                            <td>&nbsp;</td>
-                                            <td style="text-align: right;">
+                                $res .= '
                                                 <div class="btn-group">';
                                         if ($bool_change)
                                         {
@@ -1138,21 +2032,17 @@ class Applicant extends Admin_Controller{
                                         {
                                             $res .= '<a class="btn enabled"  data-toggle="modal"  href="#dialog-delete-work" title="'.lang('hapus').'" onclick="workExDelete(\''.$row->aplWorkExperienceID.'\', \''.$row->aplWorkExCompany.'\')"><i class="icon-trash "></i></a>';
                                         }
-                                        $res .= '</div>
-                                            </td>  
-                                        </tr>';
-                            }                        
-                                $res .= '</table>                        
-                                </td>
-                            </tr>';
+                                        $res .= '</div>';
+                            }                      
+                                $i++;
                 }
-                $res .= '</table>';            
+              //  $res .= '</table>';            
             } else {
                 $res .= '<script>$("#success_work").hide();</script>
                         <div class="alert alert-error">
                             '.lang('kosong').'
                         </div>';
-            }            
+            }          
             echo $res;
         }
     }        
@@ -1188,16 +2078,16 @@ class Applicant extends Admin_Controller{
     {
         if ($this->input->post('ajax'))
         {  
-            $id = $this->input->post('id');		
+            $id = $this->input->post('id');     
             $email = $this->input->post('email');
-			
+            
             $getPerson = $this->load_person();
             if (count($getPerson) > 0)
             {
                 if ($email == "")
                     $email = $getPerson->AppUserListEmail;
             }
-			
+            
             $hubungan = $this->input->post('hubungan');
             $namaKeluarga = $this->input->post('namaKeluarga');
             $jk = $this->input->post('jk');
@@ -1209,10 +2099,10 @@ class Applicant extends Admin_Controller{
             $pendidikan = $this->input->post('pendidikan');
             $pekerjaan = $this->input->post('pekerjaan');         
             
-			if ($id == "")
-				echo $this->applicant->add_family($email, $hubungan, $namaKeluarga, $jk, $tmptlahir, $tanggallahir, $pendidikan, $pekerjaan);
+            if ($id == "")
+                echo $this->applicant->add_family($email, $hubungan, $namaKeluarga, $jk, $tmptlahir, $tanggallahir, $pendidikan, $pekerjaan);
             else
-				echo $this->applicant->update_family($id, $email, $hubungan, $namaKeluarga, $jk, $tmptlahir, $tanggallahir, $pendidikan, $pekerjaan);
+                echo $this->applicant->update_family($id, $email, $hubungan, $namaKeluarga, $jk, $tmptlahir, $tanggallahir, $pendidikan, $pekerjaan);
         }
     }    
     
@@ -1226,12 +2116,12 @@ class Applicant extends Admin_Controller{
             $id = $this->input->post('id');
             echo $this->applicant->delete_family($id);
         }
-    }  	
-	
+    }   
+    
     /*
     * View Family
     */    
-	public function view_family()
+    public function view_family()
     {
         if ($this->input->post('ajax'))
         {  
@@ -1353,7 +2243,7 @@ class Applicant extends Admin_Controller{
     {
         if ($this->input->post('ajax'))
         {             
-            $id = $this->input->post('id');		
+            $id = $this->input->post('id');     
             $email = $this->input->post('email');
            
             $getPerson = $this->load_person();
@@ -1366,10 +2256,10 @@ class Applicant extends Admin_Controller{
             $speaking = $this->input->post('speaking');
             $reading = $this->input->post('reading');     
 
-			if ($id == "")
-				echo $this->applicant->add_language($email, $bahasa, $writing, $understanding, $speaking, $reading);
+            if ($id == "")
+                echo $this->applicant->add_language($email, $bahasa, $writing, $understanding, $speaking, $reading);
             else
-				echo $this->applicant->update_language($id, $email, $bahasa, $writing, $understanding, $speaking, $reading);            
+                echo $this->applicant->update_language($id, $email, $bahasa, $writing, $understanding, $speaking, $reading);            
         }
     }    
     
@@ -1383,12 +2273,12 @@ class Applicant extends Admin_Controller{
             $id = $this->input->post('id');
             echo $this->applicant->delete_language($id);
         }
-    }  	
-	
+    }   
+    
     /*
     * View Language
     */    
-	public function view_language()
+    public function view_language()
     {
         if ($this->input->post('ajax'))
         {  
@@ -1608,7 +2498,7 @@ class Applicant extends Admin_Controller{
             
 /**
 * Organization
-*/    	
+*/      
     /*
     * Add Organization
     */ 
@@ -1760,7 +2650,7 @@ class Applicant extends Admin_Controller{
 
 /**
 * Publication
-*/    	
+*/      
     /*
     * Add publication
     */ 
@@ -1887,7 +2777,7 @@ class Applicant extends Admin_Controller{
 
 /**
 * Achievements
-*/    	
+*/      
     /*
     * Add achievements
     */ 
@@ -2026,9 +2916,9 @@ class Applicant extends Admin_Controller{
                     $fileSize = $_FILES['fileFoto']['size']; 
         
                     if ($fileSize <= 200000)
-                    {        	           	                                 
+                    {                                                        
                         $fileTypes = array("jpg", "jpeg"); // File extensions
-                                		
+                                        
                         $fileParts = pathinfo($_FILES['fileFoto']['name']);
                                         
                         $direktori = dirname(dirname(dirname(dirname(dirname(__FILE__)))))."/archives/photo"; //linux
@@ -2037,7 +2927,7 @@ class Applicant extends Admin_Controller{
         
                         $sourceFile = $direktori."/".$fileName;
                                           
-                       	if (in_array(strtolower($fileParts['extension']), $fileTypes)) 
+                        if (in_array(strtolower($fileParts['extension']), $fileTypes)) 
                         { 
                             $up = move_uploaded_file($tempFile, $sourceFile);
                             if ($up)
