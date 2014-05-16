@@ -1,3 +1,4 @@
+<script>
 <?php
 
 ?>
@@ -67,18 +68,16 @@ var Document = {
               console.log('hello');
           }
           t +=
-             '<tr><td><div class="td-priority ' + cl + '">'+ dt.priority + '</div></td>' +
+             '<tr><td><div class="td-priority ' + cl + '">'+ dt.checkbox + '</div></td>' +
              '<td><div class="td-name ' + cl + '">' + dt.name + '</div></td>' +
-             '<td>' + '' + '</td>' +
-             '<td>' + dt.selection_cv + '</td>' +
-             '<td>' + dt.interview_hr + '</td>' +
-             '<td>' + dt.interview_user + '</td>' +
-             '<td>' + dt.interview_user2 + '</td>' +
-             '<td>' + dt.test_bidang + '</td>' +
-             '<td>' + dt.psikotes + '</td>' +
-             '<td>' + dt.mcu + '</td>' +
-             '<td>' + dt.persentasi + '</td>' +
-             '<td>' + dt.hiring + '</td></tr>';
+             '<td>' + dt.jobs + '</td>' +
+             '<td>' + dt.company + '</td>' +
+             '<td>' + dt.state + '</td>' +
+             '<td>' + dt.city + '</td>' +
+             '<td>' + dt.employment_type + '</td>' +
+             '<td>' + dt.start + '</td>' +
+             '<td>' + dt.end + '</td>' +
+             '<td>' + dt.action + '</td>';
         }
         $('#document-data').html(t);
         $('#pagination').html(d.pagination);
@@ -110,3 +109,4 @@ $.fn.serializeFormJSON = function() {
    });
    return o;
 };
+</script>
