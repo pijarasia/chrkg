@@ -43,7 +43,7 @@ abstract class Base_Controller extends MX_Controller {
 			if ( ! $this->input->is_cli_request() AND ! $this->input->is_ajax_request())
 			{
 				$this->load->library('console');
-				$this->output->enable_profiler(TRUE);
+				$this->output->enable_profiler(FALSE);
 			}
 
 			$this->load->driver('cache', array('adapter' => 'dummy'));
