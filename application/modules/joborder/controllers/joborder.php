@@ -902,10 +902,13 @@ class Joborder extends Admin_Controller {
     Assets::clear_cache();
     Assets::add_module_css('joborder', 'custom.css');
     Assets::add_css('custom.dialog.css');
-    // Assets::add_js( $this->load->view('js/ready', array('total' => $this->joborder->count_all()), true) , 'inline');
+    Assets::add_js(
+        $this->load->view('js/get_search', array(
+          'total' => $this->joborder->count_all()), true), 'inline');
+    Assets::add_js($this->load->view('js/ready', array('total' => $this->joborder->count_all()), true), 'inline');
 
     if ($this->input->is_ajax_request()) {
-      // $this->joborder->record_template();
+      $this->joborder->record_search();
     }
     else {
       Template::set($data);
